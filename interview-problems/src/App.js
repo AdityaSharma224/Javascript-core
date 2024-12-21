@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import DebounceExample from './components/debounce';
+import DebounceCounter from './components/debounce-counter';
+import ThrottleCounter from './components/throttle-counter';
 
 function App() {
   
   return (
     <div style={{ display:'flex',height:'100vh',alignItems:'center',justifyContent:'center' }}>
-     <DebounceExample/>
+     <ThrottleCounter/>
     </div>
   );
 }
