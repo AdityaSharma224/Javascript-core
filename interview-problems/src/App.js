@@ -7,12 +7,13 @@ import React from 'react';
 // import Accordion from './components/accordion';
 // import Carousel from './components/carousel';
 // import Pagination from './components/pagination';
-import ApiPractice from './components/api-practice';
+// import ApiPractice from './components/api-practice';
+import ProgressBar from './components/progressbar';
 function App() {
 
   return (
     <div>
-      <ApiPractice />
+      <ProgressBar />
     </div>
   );
 }
