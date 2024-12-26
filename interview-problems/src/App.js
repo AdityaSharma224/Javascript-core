@@ -7,12 +7,14 @@ import React from 'react';
 // import Accordion from './components/accordion';
 // import Carousel from './components/carousel';
 // import Pagination from './components/pagination';
-import ApiPractice from './components/api-practice';
+// import ApiPractice from './components/api-practice';
+import Counter from './components/counter';
+
 function App() {
 
   return (
-    <div>
-      <ApiPractice />
+    <div style={{ display:'flex',height: '100vh', alignItems: 'center', justifyContent: 'center', width:'100%' }}>
+      <Counter />
     </div>
   );
 }
