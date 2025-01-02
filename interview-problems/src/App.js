@@ -8,13 +8,14 @@ import React from 'react';
 // import Carousel from './components/carousel';
 // import Pagination from './components/pagination';
 // import ApiPractice from './components/api-practice';
-import Counter from './components/counter';
+//import Counter from './components/counter';
+import ChangeCaseType from './components/change-text-case';
 
 function App() {
 
   return (
-    <div style={{ display:'flex',height: '100vh', alignItems: 'center', justifyContent: 'center', width:'100%' }}>
-      <Counter />
+    <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+      <ChangeCaseType />
     </div>
   );
 }
