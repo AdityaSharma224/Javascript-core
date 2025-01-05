@@ -8,13 +8,15 @@ import React from 'react';
 // import Carousel from './components/carousel';
 // import Pagination from './components/pagination';
 // import ApiPractice from './components/api-practice';
-import Counter from './components/counter';
+// import Counter from './components/counter';
+// import UseRefComponent from './components/useRef';
+import UseContextComponent from './components/useContext';
 
 function App() {
 
   return (
     <div style={{ display:'flex',height: '100vh', alignItems: 'center', justifyContent: 'center', width:'100%' }}>
-      <Counter />
+      <UseContextComponent />
     </div>
   );
 }
