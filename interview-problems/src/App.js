@@ -8,25 +8,16 @@ import React from 'react';
 // import Carousel from './components/carousel';
 // import Pagination from './components/pagination';
 // import ApiPractice from './components/api-practice';
-<<<<<<< HEAD
 // import Counter from './components/counter';
 // import UseRefComponent from './components/useRef';
-import UseContextComponent from './components/useContext';
-=======
-//import Counter from './components/counter';
-import ChangeCaseType from './components/change-text-case';
->>>>>>> 8ffe3fd0086034bdd93ff6f679b0db395ddda2e9
-
+// import UseContextComponent from './components/useContext';
+// import DarkLightToogle from './components/dark-light-mode';
+import UseReducerComponent from './components/useReducer'; 
 function App() {
 
   return (
-<<<<<<< HEAD
     <div style={{ display:'flex',height: '100vh', alignItems: 'center', justifyContent: 'center', width:'100%' }}>
-      <UseContextComponent />
-=======
-    <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-      <ChangeCaseType />
->>>>>>> 8ffe3fd0086034bdd93ff6f679b0db395ddda2e9
+      <UseReducerComponent/>
     </div>
   );
 }

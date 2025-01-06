@@ -11,7 +11,7 @@ const Bar = ({ progress }) => {
   );
 };
 
-const ProgressBar = ({ progress }) => {
+const ProgressBar = () => {
   const [prog, setProgress] = useState(0);
 
   const increaseProgress = () => {
