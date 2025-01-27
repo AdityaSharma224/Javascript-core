@@ -1,7 +1,14 @@
 // The forEach() executes the callback function on each element of array.
 
-const arr = [1,2,3,4,5,6,7,8];
+const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+function consoleFunc(x) {
+    console.log(x);
+}
 
-const value = arr.forEach(item => console.log(item));
+Array.prototype.ourForEach = function (callBack) {
+    for (let i = 0; i < this.length; i++) {
+        callBack(this[i]);
+    }
+};
 
-console.log('ans',value);
+const ans = arr.ourForEach(consoleFunc);

@@ -1,41 +1,41 @@
-let checkEven = new Promise((resolve,reject) => {
-    let num = 4;
-    if(num % 2 === 0)resolve('This num is even!');
+let checkEven = new Promise((resolve, reject) => {
+    let num = 3;
+    if (num % 2 === 0) resolve('This num is even!');
     else reject('The num is odd');
 })
+
+checkEven.then((message) => console.log(message)).catch((error) => console.log(error))
 
 // .all()
 // Waits for all promises to resolve and returns their results as an array. If any promise is rejected, it immediately rejects.
 // Promise.all([
 //     Promise.resolve("Task 1 completed"),
 //     Promise.resolve("Task 2 completed"),
-//     Promise.resolve("Task 3 failed")
-// ])
+//     Promise.resolve("Task 3 failed"),
+// ]).then((results)=>console.log(results))
 
 // .allSettled()
-// Waits for all promises to settle (fulfilled or rejected) Method and returns an array of their outcomes.
+//Waits for all promises to settle (fulfilled or rejected) Method and returns an array of their outcomes.
 // Promise.allSettled([
 //     Promise.resolve("Task 1 completed"),
 //     Promise.resolve("Task 2 failed"),
-//     Promise.resolve("Task 3 completed")
+//     Promise.reject("Task 3 completed")
 // ])
 //     .then((results) => console.log(results));
 
 // .race()
-// Promise.race() Method resolves or rejects as soon as the first promise settles.
+//Promise.race() Method resolves or rejects as soon as the first promise settles.
 // Promise.race([
-//     new Promise((resolve) => setTimeout(() => resolve("Task 1 finished"), 1000)),
-//     new Promise((resolve) => setTimeout(() => resolve("Task 2 finished"), 500))
-// ])
-//     .then((result) => console.log(result));
-
+//     new Promise((resolve) => setTimeout(() => resolve("Task 1 finished"), 500)),
+//     new Promise((reject) => setTimeout(() => reject("Task 2 finished"), 1000))
+// ]).then((result) => console.log(result));
 
 // .any()
 // Promise.any() Method resolves with the first fulfilled promise. If all are rejected, it rejects with an AggregateError.
 // Promise.any([
-//     Promise.reject("Task 1 failed"),
-//     Promise.reject("Task 2 completed"),
-//     Promise.reject("Task 3 completed")
+//     new Promise((reject) => setTimeout(() => reject("finsied1"), 1000)),
+//     new Promise((reject) => setTimeout(() => reject("finsied2"), 500)),
+//     new Promise((reject) => setTimeout(() => reject("finsied3"), 5000)),
 // ])
 //     .then((result) => console.log(result))
 //     .catch((error) => console.error(error));
@@ -56,18 +56,73 @@ let checkEven = new Promise((resolve,reject) => {
 
 // Sequential Execution with Array.prototype.reduce()
 
-// let arr = [1,2,3];
+let arr = [1,2,3,4,5,6,7,8];
 
-// arr.reduce((prev,curr)=>{
-//     return prev.then(()=>{
-//         return new Promise((resolve)=>{
-//             console.log(
-//                 `Processing item ${curr}`
-//             );
-//             setTimeout(resolve,1000);
-//         });
-//     });
-// }, Promise.resolve())
+arr.reduce((prev,curr)=>{
+    return prev.then(()=>{
+        return new Promise((resolve)=>{
+            console.log(
+                `Processing item ${curr}`
+            );
+            setTimeout(resolve,2000);
+        });
+    });
+}, Promise.resolve())
 
+function customPromise(executor) {
+    let onResolve, onReject, isCalled = false, 
+        isFulfilled = false, isRejected = false, output, err;
+  
+    this.then = function(resolveCallback) {
+      onResolve = resolveCallback;
+      
+      if(!isCalled && isFulfilled) {
+        isCalled = true;
+        onResolve(output);
+      }
+      return this;
+    }
+    
+    this.catch = function(rejectCallback) {
+      onReject = rejectCallback;
+      
+      if(!isCalled && isRejected) {
+        isCalled = true;
+        onReject(err);
+      }
+      return this;
+    }
+  
+    function resolver(data) {
+      isFulfilled = true;
+      output = data;
+      
+      if(typeof onResolve=== 'function' && !isCalled){
+        isCalled = true;
+        onResolve(data);
+      }
+    }
+    
+    function rejecter(error) {
+      isRejected = true;
+      err = error;
+      
+      if(typeof onReject === 'function' && !isCalled){
+        isCalled = true;
+        onReject(error);
+      }
+    }
+    
+    executor(resolver, rejecter);
+  }
 
+  let p1 = new customPromise(
+    (resolve, reject) => setTimeout(() => resolve('Resolved successfully', 1000))
+  );
+  p1.then((data) => console.log(data));
+  
+  let p2 = new customPromise(
+    (resolve, reject) => resolve('Resolved right away');
+  );
+  p2.then((data) => console.log(data));
 
