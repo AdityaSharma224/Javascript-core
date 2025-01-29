@@ -46,3 +46,14 @@ const Pagination = () => {
 };
 
 export default Pagination;
+
+// pagination using offset is commonly implemented when fetching data from an API or filtering a dataset.
+
+// async function fetchUsers(offset, limit) {
+//   const response = await fetch(`https://api.example.com/users?offset=${offset}&limit=${limit}`);
+//   const data = await response.json();
+//   return data;
+// }
+
+// // Fetch users from offset 20, with a limit of 10
+// fetchUsers(20, 10).then(console.log);
