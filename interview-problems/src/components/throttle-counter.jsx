@@ -1,3 +1,5 @@
+// Throttling ensures that a function is executed at most once in a specified interval, no matter how many times it is triggered.
+
 import React, { useState, useEffect, useCallback } from "react";
 
 function ThrottleCounter() {

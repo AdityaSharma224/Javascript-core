@@ -1,3 +1,9 @@
+//Debouncing ensures that a function is executed only after a specified delay has passed since the last time it was called. If the function is called again before the delay expires, the timer resets.
+// Use case: Useful for handling events that should be triggered after a user stops performing an action, like:
+
+// Search input auto-suggestions
+// Window resizing
+// Click event handlers
 import React, { useState, useEffect, useCallback } from "react";
 
 function DebounceCounter() {

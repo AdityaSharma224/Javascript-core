@@ -1,3 +1,5 @@
+// The useReducer hook is a state management hook in React that provides an alternative to the useState hook. It is used when the state of a component is complex and requires more than one state variable.
+
 import React, { useState, useEffect, useCallback, useReducer } from "react";
 
 function UseReducerComponent() {

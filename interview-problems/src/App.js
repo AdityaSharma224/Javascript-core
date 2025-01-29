@@ -12,12 +12,14 @@ import React from 'react';
 // import UseRefComponent from './components/useRef';
 // import UseContextComponent from './components/useContext';
 // import DarkLightToogle from './components/dark-light-mode';
-import UseReducerComponent from './components/useReducer'; 
+//import UseReducerComponent from './components/useReducer';
+//import EventBubblingExample from './components/event-bubbling';
+import WithEventDelegation from './components/event-delegation';
 function App() {
 
   return (
-    <div style={{ display:'flex',height: '100vh', alignItems: 'center', justifyContent: 'center', width:'100%' }}>
-      <UseReducerComponent/>
+    <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+      <WithEventDelegation />
     </div>
   );
 }
