@@ -1,11 +1,11 @@
 // JavaScript Promises make handling asynchronous operations like API calls, file loading, or time delays easier. Think of a Promise as a placeholder for a value that will be available in the future. It can be in one of three states
-let checkEven = new Promise((resolve, reject) => {
-    let num = 3;
-    if (num % 2 === 0) resolve('This num is even!');
-    else reject('The num is odd');
-})
+// let checkEven = new Promise((resolve, reject) => {
+//     let num = 3;
+//     if (num % 2 === 0) resolve('This num is even!');
+//     else reject('The num is odd');
+// })
 
-checkEven.then((message) => console.log(message)).catch((error) => console.log(error))
+//checkEven.then((message) => console.log(message)).catch((error) => console.log(error))
 
 // .all()
 // Waits for all promises to resolve and returns their results as an array. If any promise is rejected, it immediately rejects.
@@ -123,7 +123,7 @@ function customPromise(executor) {
   p1.then((data) => console.log(data));
   
   let p2 = new customPromise(
-    (resolve, reject) => resolve('Resolved right away');
+    (resolve, reject) => resolve('Resolved right away')
   );
   p2.then((data) => console.log(data));
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 function Carousel() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -10,6 +10,27 @@ function Carousel() {
     "https://variety.com/wp-content/uploads/2024/07/Elon-Musk.jpg?w=1000&h=667&crop=1",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeenmPo8e1apzDqlugFk8CM2Kk2RjVBqxn2g&s",
   ];
+
+  const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay)
+    }
+  }
+
+  const throttle = (func, limit) => {
+    let inThrottle;
+    return (...args) => {
+      if (!inThrottle) {
+        func(...args);
+        inThrottle = true;
+        setTimeout(() => (inThrottle = false), limit);
+      }
+    };
+  };
 
   const handleprev = () => {
     setCurrentImage((prevImage) =>
@@ -23,6 +44,9 @@ function Carousel() {
     );
   };
 
+  const handleDebouncedPrev = useCallback(throttle(handleprev, 2000), []);
+  const handleDebouncedNext = useCallback(throttle(handleNext, 2000), []);
+
   return (
     <div className="Carousel">
       <div
@@ -35,7 +59,7 @@ function Carousel() {
         }}
       >
         <button
-          onClick={handleprev}
+          onClick={handleDebouncedPrev}
           style={{
             marginRight: "20px", // Add spacing to the right of the left button
           }}
@@ -51,7 +75,7 @@ function Carousel() {
           }}
         />
         <button
-          onClick={handleNext}
+          onClick={handleDebouncedNext}
           style={{
             marginLeft: "20px", // Add spacing to the left of the right button
           }}

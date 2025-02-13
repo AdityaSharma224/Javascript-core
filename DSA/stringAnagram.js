@@ -38,6 +38,6 @@ const users = [
     { name: "Alice", age: 25 },
     { name: "Bob", age: 30 }
 ];
-const updatedUsers = users.map(user => user.name ==="Bob" ? ({ ...user, age: user.age + 1 }) : user)
+const updatedUsers = users.map(user => user.name === "Bob" ? ({ ...user, name: "aditya", age: user.age + 1 }) : user)
 
 console.log(updatedUsers);

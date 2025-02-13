@@ -2,26 +2,26 @@ const arr = [1, 2, 2, 3, 4, 4, 5];
 // const duplicates = arr.filter((num, index, self) => self.indexOf(num) !== index);
 // console.log(duplicates);
 
-// function removeDuplicates(arr) {
-//     const result = [];
-//     for (let i = 0; i < arr.length; i++) {
-//         let isDuplicate = false;
+function removeDuplicates(arr) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        let isDuplicate = false;
 
-//         // Check if the current element already exists in the result array
-//         for (let j = 0; j < result.length; j++) {
-//             if (arr[i] === result[j]) {
-//                 isDuplicate = true;
-//                 break;
-//             }
-//         }
+        // Check if the current element already exists in the result array
+        for (let j = 0; j < result.length; j++) {
+            if (arr[i] === result[j]) {
+                isDuplicate = true;
+                break;
+            }
+        }
 
-//         // If it's not a duplicate, add it to the result array
-//         if (!isDuplicate) {
-//             result.push(arr[i]);
-//         }
-//     }
-//     return result;
-// }
+        // If it's not a duplicate, add it to the result array
+        if (!isDuplicate) {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+}
 
 // function removeDuplicates(arr) {
 //     const n = arr.length;

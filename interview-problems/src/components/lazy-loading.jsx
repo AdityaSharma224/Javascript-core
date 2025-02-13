@@ -25,7 +25,7 @@ function LazyLoadComponent() {
   return (
     <div>
       <h1>Lazy Loading Without Suspense</h1>
-      <div style={{ height: '1500px' }}>
+      <div style={{ height: '1100px' }}>
         {/* Simulating a long page to scroll */}
         Scroll down to load the component
       </div>
