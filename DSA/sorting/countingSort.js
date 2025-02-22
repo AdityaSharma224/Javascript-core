@@ -1,4 +1,4 @@
-
+//The basic idea behind Counting Sort is to count the frequency of each distinct element in the input array and use that information to place the elements in their correct sorted positions.
 function countingSort(arr,n){
     let maxData = 0;
     for(let i=0;i<n;i++){

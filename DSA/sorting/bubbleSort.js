@@ -3,8 +3,8 @@
 function bubbleSort(arr,n){
     for(let i=0;i<n;i++){
         let swapped = false;
-        for(let j=0;j<n-i-1;j++){
-            if(arr[j]>arr[j+1]){
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
                 let temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
@@ -20,6 +20,16 @@ function printArray(arr,size){
     }
 };
 
-const arr = [1,3,2,5,4,7,6];
-bubbleSort(arr,arr.length);
-printArray(arr,arr.length);
+const arr = [1, 3, 2, 5, 4, 7, 6];
+bubbleSort(arr, arr.length);
+printArray(arr, arr.length);
+
+
+// Time Complexity:
+// Best Case(already sorted): O(n)
+// Worst Case: O(n²)
+// Average Case: O(n²)
+// Space Complexity: O(1)(in -place)
+// Efficiency:
+// Very inefficient for large datasets.
+// Only useful for small arrays or when the array is mostly sorted(best case).

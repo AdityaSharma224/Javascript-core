@@ -14,12 +14,19 @@ function selectionSort(arr,size){
     }
 }
 
-function printArray(arr,size){
-    for(let i=0;i<size;i++){
+function printArray(arr, size) {
+    for (let i = 0; i < size; i++) {
         console.log(arr[i] + " ");
     }
 };
 
-const arr = [1,3,2,5,4,7,6];
-selectionSort(arr,arr.length);
-printArray(arr,arr.length);
+const arr = [1, 3, 2, 5, 4, 7, 6];
+selectionSort(arr, arr.length);
+printArray(arr, arr.length);
+
+// Time Complexity:
+// Best, Worst, and Average Case: O(n²) (always scans the entire array to find the smallest element).
+// Space Complexity: O(1) (in-place)
+// Efficiency:
+// Not very efficient, as it always takes quadratic time regardless of input.
+// Better than bubble sort for arrays with fewer swaps.
