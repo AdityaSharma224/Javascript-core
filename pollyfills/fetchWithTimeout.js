@@ -1,12 +1,31 @@
-const obj1 = {
-  a:1,
-  b:2,
+const fetchWithTimeout = (url,duration) => {
+  return new Promise((resolve,reject)=>{
+    const controller = new AbortController();
+    const signal = controller.signal;
+    let timerId = null;
+
+    fetch(url,{signal})
+    .then((resp)=>{
+      resp.json().then((e)=>{
+        clearTimeout(timerId);
+        resolve(e);
+      }).catch((error)=>{
+        reject(error);
+      })
+    })
+    .catch((error)=>{
+      reject(error);
+    })
+
+
+    timerId = setTimeout(()=>{
+      controller.abort();
+    },duration);
+  })
 }
 
-const obj2 = {
-  c:3,
-}
-
-const obj3 = {...obj1,...obj2};
-
-console.log(obj3);
+fetchWithTimeout('https://jsonplaceholder.typicode.com/todos/1',100).then((resp)=>{
+  console.log(resp);
+}).catch((error)=>{
+  console.error(error);
+})
