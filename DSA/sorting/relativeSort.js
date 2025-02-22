@@ -5,7 +5,7 @@ function relativeSort(arr1,arr2){
         for(let j=0;j<arr1.length;j++){
             if(arr1[j] === arr2[i]){
                 result.push(arr1[j]);
-                arr1[j]= - 1;
+                arr1[j]= - 1; 
             }
         }
     }

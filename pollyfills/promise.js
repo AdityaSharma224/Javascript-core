@@ -53,7 +53,6 @@ let checkEven = new Promise((resolve,reject) => {
 //     .then((value) => value + 3) // Adds 3
 //     .then((finalValue) => console.log(finalValue)); // Logs: 13
 
-
 // Sequential Execution with Array.prototype.reduce()
 
 // let arr = [1,2,3];

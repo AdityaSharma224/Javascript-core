@@ -1,6 +1,6 @@
+// Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity are quite high.
 
 function bubbleSort(arr,n){
-    
     for(let i=0;i<n;i++){
         let swapped = false;
         for(let j=0;j<n-i-1;j++){
@@ -8,16 +8,15 @@ function bubbleSort(arr,n){
                 let temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
-                swapped = true;
             }
-        } 
-        if(!swapped)return;
+        }
+        if(!swapped) return;
     }
 }
 
 function printArray(arr,size){
     for(let i=0;i<size;i++){
-        console.log(arr[i] + " ");
+        console.log(arr[i]+" ");
     }
 };
 

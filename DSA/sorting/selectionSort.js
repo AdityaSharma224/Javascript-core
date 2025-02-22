@@ -1,15 +1,16 @@
+// Selection Sort is a comparison-based sorting algorithm. It sorts an array by repeatedly selecting the smallest (or largest) element from the unsorted portion and swapping it with the first unsorted element. This process continues until the entire array is sorted.
 
-function selectionSort(arr,n){
-    for(let i=0;i<n;i++){
+function selectionSort(arr,size){
+    for(let i=0;i<size;i++){
         let mini = i;
-        for(let j=i+1;j<n;j++){
+        for(let j=i+1;j<size;i++){
             if(arr[j]<arr[mini]){
                 mini = j;
             }
         }
-    let temp = arr[i];
-    arr[i] = arr[mini];
-    arr[mini] = temp;
+        let temp = arr[i];
+        arr[i] = arr[mini];
+        arr[mini] = temp;
     }
 }
 
