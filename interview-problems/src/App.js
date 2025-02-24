@@ -15,13 +15,14 @@ import React from 'react';
 // import UseReducerComponent from './components/useReducer';
 // import EventBubblingExample from './components/event-bubbling';
 // import WithEventDelegation from './components/event-delegation';
-import VirtualizedList from './components/virtualization';
+// import VirtualizedList from './components/virtualization';
+import ProgressBar from './components/progressbar';
 
 function App() {
 
   return (
     <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-      <VirtualizedList />
+      <ProgressBar />
     </div>
   );
 }
