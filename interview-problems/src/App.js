@@ -16,13 +16,15 @@ import React from 'react';
 // import EventBubblingExample from './components/event-bubbling';
 // import WithEventDelegation from './components/event-delegation';
 // import VirtualizedList from './components/virtualization';
-import ProgressBar from './components/progressbar';
+// import ProgressBar from './components/progressbar';
+// import PhoneOtpForm from './components/otp-login';
+import FileFolderStructure from './components/folder-file-structure-vs-code';
 
 function App() {
 
   return (
-    <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-      <ProgressBar />
+    <div >
+      <FileFolderStructure />
     </div>
   );
 }
