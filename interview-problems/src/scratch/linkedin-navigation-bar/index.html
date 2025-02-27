@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0077b5;
+            padding: 10px 20px;
+            color: white;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .search-bar input {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .nav-menu li {
+            display: inline;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                right: 10px;
+                background: #0077b5;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            .nav-menu.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LinkedIn</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">My Network</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Messaging</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Me</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </nav>
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

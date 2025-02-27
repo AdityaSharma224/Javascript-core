@@ -9,7 +9,7 @@ import React from 'react';
 // import Pagination from './components/pagination';
 // import ApiPractice from './components/api-practice';
 // import Counter from './components/counter';
-// import UseRefComponent from './components/useRef';
+import UseRefComponent from './components/useRef';
 // import UseContextComponent from './components/useContext';
 // import DarkLightToogle from './components/dark-light-mode';
 // import UseReducerComponent from './components/useReducer';
@@ -18,13 +18,15 @@ import React from 'react';
 // import VirtualizedList from './components/virtualization';
 // import ProgressBar from './components/progressbar';
 // import PhoneOtpForm from './components/otp-login';
-import FileFolderStructure from './components/folder-file-structure-vs-code';
+// import FileFolderStructure from './components/folder-file-structure-vs-code';
+// import UndoCalculator from './components/undo-cal';
+// import InfinteScroll from './components/infinte-scroll';
 
 function App() {
 
   return (
     <div >
-      <FileFolderStructure />
+      <UseRefComponent />
     </div>
   );
 }
