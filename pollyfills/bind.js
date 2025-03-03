@@ -8,19 +8,19 @@ const objIntro ={
     console.log(`name is ${this.name}, place is ${this.city} and company is ${company} and work place is ${place} `)
     }
 
-//  let x  =  sayIntro.bind(objIntro,["cognizant","gurgaon"])
-// x();
+ let x  =  sayIntro.bind(objIntro,"cognizant","gurgaon")
+ x();
 
-Function.prototype.newBind = function(context,args){
-    if(typeof this !== "function"){
-        throw new Error(this,"Invalid call");
-    }
+// Function.prototype.newBind = function(context,args){
+//     if(typeof this !== "function"){
+//         throw new Error(this,"Invalid call");
+//     }
 
-    context.fnc = this;
-    return function(...nextArgs){
-        context.fnc(...args,...nextArgs);
-    }
-}
+//     context.fnc = this;
+//     return function(...nextArgs){
+//         context.fnc(...args,...nextArgs);
+//     }
+// }
 
-let x = sayIntro.newBind(objIntro,['cast','banglore'])
-x()
+// let x = sayIntro.newBind(objIntro,['cast','banglore'])
+// x()

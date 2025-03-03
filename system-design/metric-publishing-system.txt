@@ -1,0 +1,97 @@
+High-Level Design
+Goal: Collect, store, query, and visualize metrics (e.g., CPU/memory usage) from a distributed system, with efficient querying by time range or host, and alarms for thresholds (e.g., CPU > 90%).
+
+Components
+Metric Collection Agent:
+Lightweight agents (e.g., like Prometheus Node Exporter) run on each host.
+Collect CPU, memory, disk usage, etc., at regular intervals (e.g., every 10 seconds).
+Push metrics to a central ingestion service or write to a local buffer.
+
+Ingestion Service:
+A scalable API layer (e.g., REST or gRPC) that receives metrics from agents.
+Buffers incoming data and batches it for efficient writes to storage.
+
+Storage System:
+Time-series database (TSDB) like Prometheus, InfluxDB, or TimescaleDB (PostgreSQL with time-series extensions).
+Stores metrics with timestamps, host IDs, and tags (e.g., service name, region).
+
+Query Engine:
+Handles queries like “CPU usage for host X over the last hour” or “memory usage across all hosts in region Y.”
+Supports aggregation (e.g., average, max) and filtering.
+
+Visualization Layer:
+Web UI (e.g., Grafana integration) to display graphs, dashboards, and trends.
+Pulls data via the query engine.
+
+Alarm System (Stretch Goal):
+Monitors metrics in real-time and triggers alerts (e.g., email) when thresholds are crossed.
+
+Detailed Design
+Metric Collection
+How it works: Agents collect metrics locally and push them to the ingestion service over HTTP/gRPC.
+Trade-offs:
+Push vs. Pull: Push simplifies agents but risks overwhelming the ingestion service under high load. Pull (like Prometheus) gives the server control but requires discovery (e.g., service registry). I’d lean toward push for simplicity, with rate-limiting at the ingestion layer.
+Frequency: 10-second intervals balance granularity and load. Higher frequency (e.g., 1s) increases storage/query cost; lower (e.g., 1min) loses detail.
+Ingestion Service
+Scalability: Stateless ingestion nodes behind a load balancer (e.g., AWS ELB). Each node buffers metrics (e.g., 1000 events or 5 seconds) before writing to storage.
+Trade-offs:
+Buffering: Reduces write pressure on storage but risks data loss on node failure. Could add a Kafka queue for durability, but that adds complexity/latency.
+Format: Metrics as JSON (flexible) vs. binary (efficient). I’d pick JSON for ease of debugging.
+Storage System
+Choice: TimescaleDB (PostgreSQL with time-series optimizations).
+Why? Scales well for time-range queries, supports SQL for flexibility, and handles partitioning out of the box.
+Schema:
+text
+Wrap
+Copy
+CREATE TABLE metrics (
+  timestamp TIMESTAMPTZ,
+  host_id TEXT,
+  metric_type TEXT (e.g., 'cpu', 'memory'),
+  value DOUBLE PRECISION,
+  tags JSONB
+);
+SELECT create_hypertable('metrics', 'timestamp');
+Partitioning:
+Time-based: TimescaleDB automatically partitions by time (e.g., daily chunks). Efficient for range queries like “last 24 hours.”
+Host-based: Add a secondary index on host_id for fast lookups by host. Could shard by host across nodes if data grows massive.
+Sharding:
+Horizontal scaling: Split data across multiple TimescaleDB nodes by host ID hash (e.g., consistent hashing).
+Trade-offs:
+Pros: Distributes load, scales storage/query capacity.
+Cons: Cross-shard queries (e.g., “avg CPU across all hosts”) require aggregation, adding latency. Could pre-aggregate in a rollup table.
+Compression: TimescaleDB compresses old data (e.g., after 7 days), reducing storage costs while keeping recent data fast to query.
+Query Engine
+Implementation: SQL-based (via TimescaleDB) Exposed via a REST API (e.g., /query?metric=cpu&host=host1&start=...&end=...).
+Optimizations:
+Indexes on timestamp (automatic via hypertable) and host_id.
+Cache frequent queries (e.g., Redis for last 5-minute aggregates).
+Trade-offs:
+SQL vs. Custom: SQL is flexible but slower than a specialized TSDB query language (e.g., PromQL). I’d stick with SQL for generality unless performance demands otherwise.
+Caching: Reduces DB load but risks staleness. Fine for dashboards, less so for alarms.
+Visualization
+Tool: Grafana, querying the REST API or directly connecting to TimescaleDB.
+Features: Dashboards by host, metric type, or time range. Interactive zoom for time ranges.
+Trade-offs: Pre-built (Grafana) is fast to implement but less customizable than a bespoke UI.
+Alarm System (Stretch Goal)
+Design:
+Rule Engine: A separate service polls the DB every minute for recent metrics (e.g., SELECT AVG(value) FROM metrics WHERE metric_type='cpu' AND timestamp > NOW() - INTERVAL '5m' GROUP BY host_id).
+Threshold Check: If AVG(cpu) > 90%, trigger an alert.
+Notification: Push to an email queue (e.g., RabbitMQ) consumed by a mailer service.
+Trade-offs:
+Polling vs. Streaming: Polling is simple but lags (up to 1min). Streaming (e.g., Kafka + Flink) is real-time but complex. I’d start with polling.
+False Positives: Single spike might trigger an alert. Could add a “sustained threshold” (e.g., >90% for 5min), but that delays response.
+Scalability: One rule engine per shard or a distributed system (e.g., Redis Pub/Sub for alerts).
+Trade-offs Discussion
+Partitioning:
+Time-based is great for range queries but less so for host-specific queries unless indexed well.
+Host-based sharding scales writes/reads but complicates cross-host aggregates.
+Sharding:
+Pros: Handles growth in hosts/metrics.
+Cons: Query complexity and potential hotspots (uneven host load).
+Storage:
+TimescaleDB vs. Prometheus: Prometheus is optimized for metrics but less flexible than SQL. TimescaleDB scales better with partitioning.
+Alarms:
+Simplicity (polling) vs. responsiveness (streaming). Depends on how critical real-time alerts are.
+Cost:
+More frequent data collection = higher storage cost. Compression and downsampling (e.g., hourly averages for old data) mitigate this.
