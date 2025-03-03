@@ -36,6 +36,10 @@ dog.speak(); // Buddy makes a sound!
 // Prototypal Inheritance → Uses prototypes → More flexible.
 
 
+// Why Extending Array.prototype is Risky
+// Potential Conflicts: If JavaScript adds a method with the same name in the future, it can break your code.
+// Pollution of Global Scope: Every array will have the new method, even if it’s not needed.
+// Iteration Issues: If someone uses for...in to loop over an array, it may include prototype methods.
 
 
 

@@ -15,7 +15,7 @@
 //     Promise.resolve("Task 3 failed"),
 // ]).then((results)=>console.log(results))
 
-// .allSettled()
+// .allSettled()``
 //Waits for all promises to settle (fulfilled or rejected) Method and returns an array of their outcomes.
 // Promise.allSettled([
 //     Promise.resolve("Task 1 completed"),

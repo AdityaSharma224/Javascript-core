@@ -15,7 +15,3 @@
 //         }
 //     }
 // }
-
-
-const a = { b: true };
-console.log(a.b || 'present');
