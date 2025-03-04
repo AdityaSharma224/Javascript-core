@@ -28,6 +28,14 @@ int maxSubArray(vector<int>& nums) {
 
 // Instead of iterating over all subarrays, Kadane's Algorithm efficiently finds the maximum sum in a single pass.
 
+Use a variable sum to track the running subarray sum:
+Add nums[i] to sum.
+If sum exceeds max_value, update max_value.
+If sum drops below 0, reset sum = 0 (discard negative sum).
+Why reset sum = 0?
+If sum becomes negative, it cannot contribute to a larger sum in future subarrays.
+Resetting allows us to start fresh with a new subarray.
+
 int maxSubArray(vector<int>& nums) {
     int n = nums.size();
     int max_value = INT_MIN;

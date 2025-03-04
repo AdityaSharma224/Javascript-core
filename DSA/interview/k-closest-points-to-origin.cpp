@@ -6,6 +6,21 @@
 // Maintain only k closest points in the heap (pop the farthest when size > k).
 
 
+Explanation of the Code
+The function kClosest finds the k closest points to the origin (0,0) using Euclidean distance.
+
+Approach
+Max Heap (Priority Queue)
+
+Stores pairs {distance, point} where distance is squared Euclidean distance:
+distance
+
+Max heap ensures the k closest points remain.
+If heap size exceeds k, remove the farthest point.
+Extract the k closest points
+
+Pop elements from the heap and store them in result.
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -57,3 +72,48 @@ int main() {
 
     return 0;
 }
+
+Pushing n elements into heap	
+𝑂
+(
+𝑛
+log
+⁡
+𝑘
+)
+O(nlogk)
+Extracting k elements	
+𝑂
+(
+𝑘
+log
+⁡
+𝑘
+)
+O(klogk)
+Overall Complexity	
+𝑂
+(
+𝑛
+log
+⁡
+𝑘
+)
+O(nlogk)
+
+
+points = {{1,3}, {-2,2}}
+k = 1
+Step-by-Step Execution
+Push points into the heap
+
+Point (1,3) → Distance = 1² + 3² = 10
+Point (-2,2) → Distance = (-2)² + 2² = 8
+Max Heap After Insertions
+
+maxHeap = [{10, {1,3}}, {8, {-2,2}}]
+Since size > k, remove (1,3) (farthest point).
+Extract k closest points
+
+Remaining heap: {8, {-2,2}}
+Output: [[-2,2]]

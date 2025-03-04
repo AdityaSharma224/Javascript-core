@@ -43,6 +43,17 @@ int main() {
     return 0;
 }
 
+nums = {2, 3, -2, 4}
+Step-by-Step Execution
+i	nums[i]	maxProd	minProd	result
+0	2	2	2	2
+1	3	6	3	6
+2	-2	swap maxProd & minProd → (-12, -2)	-2	6
+3	4	4	-48	6
+✔️ Final Answer: 6 (subarray [2,3]).
+
+
+
 // Time & Space Complexity:
 // Time Complexity: O(n), as we iterate through nums only once.
 // Space Complexity: O(1), using only constant extra space.

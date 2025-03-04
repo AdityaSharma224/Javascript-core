@@ -60,6 +60,33 @@ int main() {
     return 0;
 }
 
+4
+/ \
+2   5
+/ \
+1   3
+Target: 3.714286
+
+Step-by-Step Execution:
+Start at root (4)
+
+abs(4 - 3.714286) = 0.285714
+closest = 4
+Move left (target < 4)
+Move to 2
+
+abs(2 - 3.714286) = 1.714286
+closest = 4 (unchanged, since 4 is closer)
+Move right (target > 2)
+Move to 3
+
+abs(3 - 3.714286) = 0.714286
+closest = 4 (unchanged)
+Move right (target > 3)
+Null node reached → Stop.
+
+Final closest value: 4
+
 // Time & Space Complexity
 // Time Complexity: O(h)
 // In a balanced BST, height h = log n, so O(log n).

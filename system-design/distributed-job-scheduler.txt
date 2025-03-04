@@ -1,0 +1,95 @@
+1. Functional Requirements
+Schedule jobs with specified execution times (one-time or recurring).
+Distribute jobs across multiple worker machines.
+Handle job execution, retries, and failure detection.
+Provide an API to submit and manage jobs.
+Trigger alerts in case of failures or SLA breaches.
+
+2. Non-Functional Requirements
+Scalability: Handle thousands/millions of jobs.
+Fault Tolerance: Ensure jobs are not lost.
+Consistency: Ensure exactly-once or at-least-once execution.
+Observability: Logs, metrics, and alerts for monitoring.
+
+3. System Components
+API Gateway: Accepts job scheduling requests.
+Job Scheduler Service: Queues jobs and assigns them to workers.
+Distributed Job Queue: Stores pending jobs.
+Worker Nodes (Executors): Executes jobs.
+Job Status DB: Stores job metadata and state.
+Alerting System: Sends alerts if jobs fail.
+Monitoring System: Collects logs and metrics.
+
+
+4. System Architecture
+Client → API Gateway → Job Scheduler → Job Queue → Worker Nodes
+                         ↳ Job DB (State Tracking)
+                         ↳ Alerting System
+- API Gateway
+Exposes REST/GraphQL endpoints.
+Handles authentication & rate limiting.
+
+- Job Scheduler Service
+Stores job metadata in Job DB.
+Adds job to Job Queue (e.g., Kafka, Redis, RabbitMQ).
+Ensures correct distribution of jobs across workers.
+
+- Job Queue (Message Broker)
+Stores jobs until a worker picks them up.
+Ensures durability and reliability.
+Examples: Kafka, RabbitMQ, SQS.
+
+- Worker Nodes (Executors)
+Fetch jobs from queue and execute them.
+Reports success or failure back to the Job Scheduler.
+Supports retries on failure.
+
+- Job Status DB
+Stores job execution status (Pending, Running, Failed, Completed).
+Indexed for quick lookups.
+
+- Alerting System
+Monitors job failures and SLA breaches.
+Triggers alerts via email, Slack, or PagerDuty.
+
+- Monitoring & Logging
+Tracks job execution latency, failures, and resource utilization.
+Uses Prometheus, Grafana, and ELK stack for observability.
+
+
+5. Scaling & Fault Tolerance
+- Horizontal Scaling:
+Add more workers to handle increased load.
+Use a leader-election approach for the scheduler (e.g., using Zookeeper or etcd).
+
+- Fault Tolerance:
+Use job acknowledgment to avoid duplicate execution.
+Retries with exponential backoff on failure.
+Store job progress checkpoints.
+
+- Consistency Handling:
+At-least-once execution: Retry on failure but might cause duplicates.
+Exactly-once execution: Requires idempotent job processing.
+
+
+- API Endpoints
+POST /job         -> Submit a new job
+GET /job/{id}     -> Get job status
+DELETE /job/{id}  -> Cancel a job
+
+- Example Workflow
+User submits a job via API → Stored in Job DB.
+Job Scheduler picks job & places it in Job Queue.
+Worker Node pulls job, executes it, and updates Job DB.
+If the job fails, it retries based on a policy.
+If retries fail, Alerting System triggers notifications.
+
+
+Component	Technology Choices	Reasoning
+API Gateway	Nginx, Envoy	Handles API requests efficiently. Nginx is lightweight and highly performant for load balancing, while Envoy is better for service-to-service communication in microservices.
+Job Scheduler	Custom Go/Java Service	Go is great for concurrency and efficiency, making it well-suited for handling thousands of jobs simultaneously. Java offers strong multi-threading and ecosystem support, making it reliable for long-running distributed services.
+Job Queue	Kafka, RabbitMQ, SQS	Kafka is best for high-throughput and real-time event-driven architecture. RabbitMQ is ideal for reliable message delivery with retries. SQS (AWS) is a managed option, removing infrastructure overhead.
+Worker Nodes	Docker, Kubernetes	Docker ensures job execution in isolated environments, making jobs portable and reproducible. Kubernetes helps in auto-scaling and managing workloads dynamically.
+Job DB	PostgreSQL, MongoDB, Redis	PostgreSQL is strong for structured job metadata storage with ACID compliance. MongoDB is better for flexible document-based job storage. Redis is ideal for fast access to job state and scheduling with TTL-based expiration.
+Monitoring	Prometheus, Grafana	Prometheus is an excellent open-source tool for real-time monitoring and alerting. Grafana provides powerful visualization for job execution metrics and system health.
+Alerting	PagerDuty, Slack, Email	PagerDuty is widely used for incident management and escalations. Slack is useful for real-time team alerts. Email ensures persistent notifications for long-term tracking.

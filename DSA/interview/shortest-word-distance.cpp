@@ -10,37 +10,37 @@
 // Space Complexity:
 // O(1), since we use only a few integer variables.
 
-// #include <iostream>
-// #include <vector>
-// #include <string>
-// #include <climits>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <climits>
 
-// using namespace std;
+using namespace std;
 
-// int shortestDistance(vector<string>& words, string word1, string word2) {
-//     int index1 = -1, index2 = -1;
-//     int minDist = INT_MAX;
+int shortestDistance(vector<string>& words, string word1, string word2) {
+    int index1 = -1, index2 = -1;
+    int minDist = INT_MAX;
     
-//     for (int i = 0; i < words.size(); i++) {
-//         if (words[i] == word1) {
-//             index1 = i;
-//         } 
-//         if (words[i] == word2) {
-//             index2 = i;
-//         }
-//         if (index1 != -1 && index2 != -1) {
-//             minDist = min(minDist, abs(index1 - index2));
-//         }
-//     }
+    for (int i = 0; i < words.size(); i++) {
+        if (words[i] == word1) {
+            index1 = i;
+        } 
+        if (words[i] == word2) {
+            index2 = i;
+        }
+        if (index1 != -1 && index2 != -1) {
+            minDist = min(minDist, abs(index1 - index2));
+        }
+    }
     
-//     return minDist;
-// }
+    return minDist;
+}
 
-// int main() {
-//     vector<string> words = {"practice", "makes", "perfect", "coding", "makes"};
+int main() {
+    vector<string> words = {"practice", "makes", "perfect", "coding", "makes"};
     
-//     cout << shortestDistance(words, "coding", "practice") << endl; // Output: 3
-//     cout << shortestDistance(words, "makes", "coding") << endl;    // Output: 1
+    cout << shortestDistance(words, "coding", "practice") << endl; // Output: 3
+    cout << shortestDistance(words, "makes", "coding") << endl;    // Output: 1
     
-//     return 0;
-// }
+    return 0;
+}

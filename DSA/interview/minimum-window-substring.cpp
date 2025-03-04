@@ -5,6 +5,7 @@
 // Each character is processed at most twice → O(m + n).
 // Space Complexity Analysis
 // Two hash maps (t_freq and window_freq) store character frequencies → O(n + m) in the worst case.
+
 // Key Optimizations
 // Sliding Window: Expands and contracts efficiently.
 // Two Pointers: left contracts when the valid window is found.
@@ -13,6 +14,8 @@
 // Input: "ADOBECODEBANC", "ABC"
 // Expand right → "ADOBEC" (valid)
 // Shrink left → "BANC" (optimal answer)
+
+
 #include <iostream>
 #include <unordered_map>
 #include <climits>

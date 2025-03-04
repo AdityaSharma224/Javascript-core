@@ -12,6 +12,16 @@
 // Store the node's value in result[height].
 // Process leaves first, so the result is built bottom-up.
 
+
+Approach
+Depth-First Search (DFS) is used to determine the height of each node.
+A height-based grouping is done, where nodes of the same height are stored together.
+Recursive calculation of height:
+Base case: If the node is nullptr, return -1.
+Calculate height of left and right subtrees.
+Assign the current node's height as max(leftHeight, rightHeight) + 1.
+Store nodes in result based on their height.
+
 #include <iostream>
 #include <vector>
 
@@ -71,6 +81,31 @@ int main() {
 
     return 0;
 }
+
+1
+       / \
+      2   3
+     / \
+    4   5
+Step-by-Step Execution
+Recursive DFS Assigns Heights
+Leaf Nodes (4, 5, 3) → Height = 0
+Node 2 → Height = 1
+Node 1 (Root) → Height = 2
+Node	Left Height	Right Height	Current Height	Stored in result
+4	-1	-1	0	[4]
+5	-1	-1	0	[4, 5]
+3	-1	-1	0	[4, 5, 3]
+2	0	0	1	[2]
+1	1	0	2	[1]
+
+Output: [4 5 3] [2] [1] 
+This means:
+
+First remove [4, 5, 3].
+Then remove [2].
+Finally remove [1].
+
 
 
 // Time Complexity: O(n)

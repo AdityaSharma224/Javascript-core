@@ -43,3 +43,19 @@ int main() {
 // Time & Space Complexity
 // Time Complexity: O(n) → Each element is processed at most twice (once when expanding r, once when moving l).
 // Space Complexity: O(1) → No extra space is used.
+
+nums = {1,1,1,0,0,0,1,1,1,1,0}, k = 2
+Step-by-Step Execution
+l	r	nums[r]	zeroCount	Action	Max Length
+0	0	1	0	Expand r	1
+0	1	1	0	Expand r	2
+0	2	1	0	Expand r	3
+0	3	0	1	Expand r	4
+0	4	0	2	Expand r	5
+0	5	0	3 (> k)	Shrink l	-
+1	6	1	2	Expand r	6
+1	7	1	2	Expand r	7
+1	8	1	2	Expand r	8
+1	9	1	2	Expand r	9
+1	10	0	3 (> k)	Shrink l	-
+Final max length = 6.

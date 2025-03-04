@@ -61,6 +61,31 @@ int main() {
     return 0;
 }
 
+graph = [
+    {1, 1, 0},
+    {0, 1, 0},
+    {1, 1, 1}
+]
+This means:
+
+Person 0 knows 1, doesn't know 2.
+Person 1 knows no one (potential celebrity).
+Person 2 knows 0 and 1.
+Step 1: Find the Candidate
+Start with candidate = 0.
+Check knows(0,1) → true, so candidate = 1.
+Check knows(1,2) → false, so candidate remains 1.
+Candidate after elimination = 1.
+
+Step 2: Validate the Candidate
+Check knows(1,0) → false ✅
+Check knows(1,2) → false ✅
+Check that everyone knows 1:
+knows(0,1) → true ✅
+knows(2,1) → true ✅
+Candidate 1 is a celebrity.
+
+
 // Time & Space Complexity Analysis
 // Time Complexity: O(n)
 // The first loop runs O(n) times.

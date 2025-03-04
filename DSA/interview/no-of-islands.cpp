@@ -1,31 +1,19 @@
-// The given C++ code is used to count the number of islands in a 2D grid where:
+Explanation of the Code
+The function numIslands counts the number of islands in a m x n grid where:
 
-// '1' represents land.
-// '0' represents water.
-// The approach follows Depth-First Search (DFS) to traverse the grid and mark connected land ('1') as visited ('0') to avoid counting the same island multiple times.
+'1' represents land.
+'0' represents water.
+An island is surrounded by water and is formed by connecting adjacent land cells horizontally or vertically.
+It uses Depth-First Search (DFS) to explore each island and mark its land as '0' (visited).
 
-// Function Breakdown
-// turn_to_dust Function (DFS Traversal)
-
-// This function is a recursive DFS that "erases" an island by marking all connected '1' cells as '0'.
-// It explores four directions: down, right, up, and left.
-// Base cases:
-// If the index is out of bounds (i < 0, j < 0, i == m, j == n).
-// If the cell is already water (grid[i][j] == '0'), return immediately.
-// Otherwise, mark the current cell as '0' and recursively visit adjacent land cells.
-// numIslands Function (Main Logic)
-
-// Loops through every cell in the grid.
-// If a cell contains '1', it indicates a new island.
-// Increments the res counter (number of islands found).
-// Calls turn_to_dust() to traverse and mark all the land in the same island as '0' (destroying the island).
-// The final count of res gives the total number of islands.
-
-// Time & Space Complexity Analysis
-// Time Complexity: O(m * n)
-// Each cell is visited once and marked as '0', so DFS runs in O(m * n) worst case.
-// Space Complexity: O(m * n) (worst case)
-// If the grid is entirely filled with land, DFS can go m*n deep in recursion (stack space).
+Approach
+Loop through the grid:
+If a '1' is found, increment the island count.
+Call turn_to_dust(i, j), which marks all connected land cells as visited ('0').
+DFS Traversal (turn_to_dust):
+Base case: If the cell is out of bounds or already '0', return.
+Mark grid[i][j] as '0' (visited).
+Recursively visit all four adjacent cells (up, down, left, right).
 
 void turn_to_dust(vector<vector<char>>& grid, int i, int j, int m, int n){
     if (i<0 || j<0 || i==m || j==n || grid[i][j]=='0') return;
@@ -51,3 +39,20 @@ int numIslands(vector<vector<char>>& grid) {
     }
     return res;
 }
+
+grid = {
+    {'1', '1', '0', '0', '0'},
+    {'1', '1', '0', '0', '0'},
+    {'0', '0', '1', '0', '0'},
+    {'0', '0', '0', '1', '1'}
+  }
+  Step-by-Step Execution
+  First DFS Call at (0,0) → Marks the entire first island ('1's at grid[0][0], grid[0][1], grid[1][0], grid[1][1]) as '0'.
+  Second DFS Call at (2,2) → Marks second island.
+  Third DFS Call at (3,3) → Marks third island.
+  ✔ Final Count: 3
+  
+  Time Complexity Analysis
+  Each cell is visited once → O(M × N)
+  DFS depth (worst case) → O(M × N)
+  Total Complexity: O(M × N) (Efficient)

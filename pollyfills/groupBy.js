@@ -75,9 +75,9 @@ console.log(data.groupBy('category'));
 //     { skill: 'javascript', user: 'Sue' },
 //     { skill: 'html', user: 'Sue' }
 //   ];
-  
+
 //   const skillsMap = new Map();
-  
+
 //   // Process endorsements to create skill objects
 //   endorsements.forEach(({ skill, user }) => {
 //     if (!skillsMap.has(skill)) {
@@ -85,14 +85,14 @@ console.log(data.groupBy('category'));
 //     }
 //     skillsMap.get(skill).users.add(user);
 //   });
-  
+
 //   // Convert to array and sort by count descending
 //   const skills = Array.from(skillsMap.values()).map(({ skill, users }) => ({
 //     skill,
 //     users: Array.from(users),
 //     count: users.size
 //   })).sort((a, b) => b.count - a.count);
-  
+
 //   console.log(skills);
 
 const endorsements = [
@@ -102,31 +102,31 @@ const endorsements = [
     { skill: 'css', user: 'Sue' },
     { skill: 'javascript', user: 'Sue' },
     { skill: 'html', user: 'Sue' }
-  ];
-  
-  const skillsMap = new Map();
-  
-  // Using a for loop instead of forEach
-  for (let i = 0; i < endorsements.length; i++) {
+];
+
+const skillsMap = new Map();
+
+// Using a for loop instead of forEach
+// Process endorsements to create skill objects
+for (let i = 0; i < endorsements.length; i++) {
     const { skill, user } = endorsements[i];
-  
+
     if (!skillsMap.has(skill)) {
-      skillsMap.set(skill, { skill, users: new Set() });
+        skillsMap.set(skill, { skill, users: new Set() });
     }
     skillsMap.get(skill).users.add(user);
-  }
-  
-  // Convert to an array, calculate counts, and sort by count descending
-  const skills = [];
-  for (const [skill, data] of skillsMap) {
+}
+
+// Convert to an array, calculate counts, and sort by count descending
+const skills = [];
+for (const [skill, data] of skillsMap) {
     skills.push({
-      skill,
-      users: Array.from(data.users),
-      count: data.users.size
+        skill,
+        users: Array.from(data.users),
+        count: data.users.size
     });
-  }
-  
-  skills.sort((a, b) => b.count - a.count);
-  
-  console.log(skills);
-  
+}
+
+skills.sort((a, b) => b.count - a.count);
+
+console.log(skills);

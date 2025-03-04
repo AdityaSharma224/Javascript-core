@@ -49,3 +49,30 @@ int main() {
 // Time & Space Complexity
 // Time Complexity: O(n²) → Since we fill an n × n DP table.
 // Space Complexity: O(n²) → The DP table requires O(n²) storage.
+
+
+
+// Instead of storing an N × N table, we can use two 1D arrays (prev and curr) for O(N) space.
+
+int longestPalindromeSubseq(string s) {
+    int n = s.length();
+    vector<int> prev(n, 0), curr(n, 0);
+
+    for (int i = n - 1; i >= 0; i--) {
+        curr[i] = 1;  // Base case: single-character palindrome
+        for (int j = i + 1; j < n; j++) {
+            if (s[i] == s[j]) {
+                curr[j] = 2 + prev[j - 1];
+            } else {
+                curr[j] = max(prev[j], curr[j - 1]);
+            }
+        }
+        prev = curr;
+    }
+
+    return prev[n - 1]; // Answer
+}
+
+✅ Time Complexity: O(N²)
+✅ Space Complexity: O(N) (instead of O(N²))
+
