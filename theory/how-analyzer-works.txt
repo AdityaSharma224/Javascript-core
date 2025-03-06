@@ -1,0 +1,3 @@
+It's a desktop application - 
+
+The CAST Imaging Analyzer is designed to provide deep insights into your application technologies and composition with ease. Whether you're assessing system architecture or optimizing IT landscapes, it ensures accurate results and a seamless experience. Choose any of these options to use the analyzer.

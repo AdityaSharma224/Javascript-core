@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Invite UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+        }
+        .modal {
+            width: 300px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+        }
+        .modal h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .modal p {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .maybe { background: #ccc; }
+        .decline { background: #e74c3c; color: white; }
+        .accept { background: #2ecc71; color: white; }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <h3>Interview scheduled for J. Doe at 3/17/2011 1:15 PM PDT</h3>
+        <p><strong>Location:</strong> Room 1</p>
+        <p><strong>Invitees:</strong> George, John, Paul, Ringo</p>
+        <p><strong>Calendar:</strong> 
+            <select>
+                <option value="calendar">📅 Calendar</option>
+                <option value="tasks">📋 Tasks</option>
+            </select>
+        </p>
+        <p><strong>Alarm:</strong> 15 minutes before</p>
+        <p><strong>Note:</strong> Dear George,</p>
+        <div class="buttons">
+            <button class="maybe">Maybe</button>
+            <button class="decline">Decline</button>
+            <button class="accept">Accept</button>
+        </div>
+    </div>
+</body>
+</html>
