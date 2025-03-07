@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn News Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .news-container {
+            width: 500px;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab {
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #555;
+        }
+        .tab.active {
+            border-bottom: 3px solid orange;
+            color: black;
+        }
+        .news-list {
+            margin-top: 10px;
+        }
+        .news-item {
+            border-bottom: 1px dotted #ccc;
+            padding: 8px 0;
+        }
+        .news-item a {
+            text-decoration: none;
+            color: #0073b1;
+            font-weight: bold;
+        }
+        .meta {
+            font-size: 12px;
+            color: #666;
+        }
+        .discussion {
+            float: right;
+            color: #0073b1;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .actions {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .actions a {
+            color: #0073b1;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        const newsData = {
+            "MostActivity": [
+                { title: "Landau lands powerful partners", source: "Variety", date: "August 14, 2008" },
+                { title: "I got my job through social networking", source: "International Herald Tribune", date: "August 14, 2008" }
+            ],
+            "Company": [
+                { title: "Company-related news", source: "Business Times", date: "August 14, 2008" }
+            ],
+            "OtherCompanies": [
+                { title: "Other companies' updates", source: "Wall Street Journal", date: "August 14, 2008" }
+            ],
+            "Industry": [
+                { title: "Industry trends", source: "Forbes", date: "August 14, 2008" }
+            ]
+        };
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            
+            const newsContainer = document.getElementById('news-content');
+            newsContainer.innerHTML = "";
+            
+            newsData[tabName].forEach(news => {
+                const item = document.createElement('div');
+                item.classList.add('news-item');
+                item.innerHTML = `
+                    <a href="#">${news.title}</a>
+                    <div class="meta">${news.source} | ${news.date}</div>
+                    <span class="discussion">Start discussion</span>
+                `;
+                newsContainer.appendChild(item);
+            });
+        }
+        
+        window.onload = () => showTab('MostActivity');
+    </script>
+</head>
+<body>
+    <div class="news-container">
+        <div class="tabs">
+            <div class="tab active" id="MostActivity" onclick="showTab('MostActivity')">Most Activity</div>
+            <div class="tab" id="Company" onclick="showTab('Company')">Company</div>
+            <div class="tab" id="OtherCompanies" onclick="showTab('OtherCompanies')">Other Companies</div>
+            <div class="tab" id="Industry" onclick="showTab('Industry')">Industry</div>
+        </div>
+        
+        <div class="news-list" id="news-content"></div>
+        
+        <div class="actions">
+            <a href="#">Submit a new article</a>
+            <a href="#">See Discussions</a>
+            <a href="#">See more News »</a>
+        </div>
+    </div>
+</body>
+</html>

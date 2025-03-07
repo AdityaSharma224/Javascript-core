@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator with Undo/Redo</title>
+    <style>
+        /* Basic styling for the calculator */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+        }
+        .calculator {
+            width: 250px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .display {
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background: #ddd;
+        }
+        .undo-redo {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .undo, .redo {
+            width: 48%;
+            background: #f39c12;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <!-- Display for showing the entered values and results -->
+        <input type="text" class="display" id="display" readonly>
+        
+        <!-- Calculator buttons -->
+        <div class="buttons">
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('/')">/</button>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('*')">*</button>
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('-')">-</button>
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="appendValue('+')">+</button>
+            <button onclick="clearDisplay()">C</button>
+        </div>
+        
+        <!-- Undo and Redo buttons -->
+        <div class="undo-redo">
+            <button class="undo" onclick="undo()">Undo</button>
+            <button class="redo" onclick="redo()">Redo</button>
+        </div>
+    </div>
+
+    <script>
+        let history = []; // Stack to store previous states for undo functionality
+        let redoStack = []; // Stack to store redo states
+        let display = document.getElementById("display"); // Reference to the display input field
+
+        // Function to append values to the display
+        function appendValue(value) {
+            history.push(display.value); // Save current state before modification
+            redoStack = []; // Clear redo stack as a new change is made
+            display.value += value;
+        }
+
+        // Function to evaluate and display the result
+        function calculateResult() {
+            try {
+                history.push(display.value); // Save current state before calculation
+                redoStack = []; // Clear redo stack
+                display.value = eval(display.value); // Evaluate the expression
+            } catch {
+                display.value = "Error"; // Handle invalid expressions
+            }
+        }
+
+        // Function to clear the display
+        function clearDisplay() {
+            history.push(display.value); // Save current state before clearing
+            redoStack = []; // Clear redo stack
+            display.value = "";
+        }
+
+        // Function to undo last operation
+        function undo() {
+            if (history.length > 0) {
+                redoStack.push(display.value); // Save current state for redo
+                display.value = history.pop(); // Restore previous state
+            }
+        }
+
+        // Function to redo the last undone operation
+        function redo() {
+            if (redoStack.length > 0) {
+                history.push(display.value); // Save current state for undo
+                display.value = redoStack.pop(); // Restore the next state
+            }
+        }
+    </script>
+</body>
+</html>
