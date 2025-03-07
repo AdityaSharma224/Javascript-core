@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator with Undo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f5f5;
+        }
+
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .history {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .history p {
+            margin: 5px 0;
+        }
+
+        .undo-section {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2>Calculator with Undo</h2>
+        <input type="number" id="inputValue" placeholder="Enter number">
+        <div class="buttons">
+            <button onclick="performOperation('+')">+</button>
+            <button onclick="performOperation('-')">-</button>
+            <button onclick="performOperation('*')">*</button>
+            <button onclick="performOperation('/')">/</button>
+        </div>
+
+        <div class="undo-section">
+            <button onclick="undo()">Undo</button>
+            <input type="number" id="undoIndex" placeholder="Undo to Index">
+            <button onclick="undoToIndex()">Undo to Index</button>
+        </div>
+
+        <h3>Result: <span id="currentValue">0</span></h3>
+        <div class="history">
+            <h4>History:</h4>
+            <p id="historyList">No operations yet.</p>
+        </div>
+    </div>
+
+    <script>
+        class Calculator {
+            constructor() {
+                this.history = [];
+                this.currentValue = 0;
+            }
+
+            performOperation(operation, number) {
+                if (isNaN(number) || number === "") {
+                    alert("Please enter a valid number.");
+                    return;
+                }
+
+                this.history.push(this.currentValue);
+
+                switch (operation) {
+                    case "+":
+                        this.currentValue += number;
+                        break;
+                    case "-":
+                        this.currentValue -= number;
+                        break;
+                    case "*":
+                        this.currentValue *= number;
+                        break;
+                    case "/":
+                        if (number !== 0) {
+                            this.currentValue /= number;
+                        } else {
+                            alert("Cannot divide by zero");
+                            return;
+                        }
+                        break;
+                    default:
+                        alert("Invalid operation");
+                        return;
+                }
+
+                this.updateUI();
+            }
+
+            undo() {
+                if (this.history.length > 0) {
+                    this.currentValue = this.history.pop();
+                } else {
+                    alert("No history to undo.");
+                }
+                this.updateUI();
+            }
+
+            undoToIndex(index) {
+                if (index >= 0 && index < this.history.length) {
+                    this.currentValue = this.history[index];
+                    this.history = this.history.slice(0, index);
+                } else {
+                    alert("Invalid index.");
+                }
+                this.updateUI();
+            }
+
+            updateUI() {
+                document.getElementById("currentValue").textContent = this.currentValue;
+                document.getElementById("historyList").innerHTML = 
+                    this.history.length ? this.history.join(" → ") : "No history yet.";
+            }
+        }
+
+        const calculator = new Calculator();
+
+        function performOperation(op) {
+            const value = Number(document.getElementById("inputValue").value);
+            calculator.performOperation(op, value);
+            document.getElementById("inputValue").value = "";
+        }
+
+        function undo() {
+            calculator.undo();
+        }
+
+        function undoToIndex() {
+            const index = Number(document.getElementById("undoIndex").value);
+            calculator.undoToIndex(index);
+        }
+    </script>
+
+</body>
+</html>
