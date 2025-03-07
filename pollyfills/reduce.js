@@ -7,18 +7,27 @@ function addition(accumulator, current) {
     return accumulator;
 }
 
-// Array.prototype.newReduce = function (callback, initialValue) {
-//     var accumulator = initialValue === undefined ? undefined : initialValue;
+// Adding a custom reduce method to the Array prototype
+Array.prototype.newReduce = function (callback, initialValue) {
+    // Initialize the accumulator
+    // If initialValue is provided, use it; otherwise, set accumulator to undefined
+    var accumulator = initialValue === undefined ? undefined : initialValue;
 
-//     for (let i = 0; i < this.length; i++) {
-//         if (accumulator !== undefined) {
-//             accumulator = callback.call(undefined, accumulator, this[i], i, this);
-//         } else {
-//             accumulator = this[i];
-//         }
-//     }
-//     return accumulator;
-// }
+    // Iterate over the array elements
+    for (let i = 0; i < this.length; i++) {
+        if (accumulator !== undefined) {
+            // If accumulator is already initialized, apply the callback function
+            accumulator = callback.call(undefined, accumulator, this[i], i, this);
+        } else {
+            // If no initialValue is provided, take the first element as the accumulator
+            accumulator = this[i];
+        }
+    }
+
+    // Return the final accumulated value
+    return accumulator;
+};
+
 
 const sum = array.reduce((acc, curr) => acc + curr, 0);
 

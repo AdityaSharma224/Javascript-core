@@ -1,27 +1,34 @@
+// Global array to keep track of all timeout IDs
 window.timeoutIds = [];
 
-// store the original method
+// Store the original setTimeout function before overwriting it
 const originalTimeoutFn = window.setTimeout;
 
-//over-writing the original method
-window.setTimeout = function(fn, delay) { 
+// Overriding the original setTimeout method
+window.setTimeout = function (fn, delay) {
+  // Call the original setTimeout and store the timeout ID
   const id = originalTimeoutFn(fn, delay);
-  timeoutIds.push(id);
-  
-  //return the id so that it can be originally cleared
-  return id;
-}
 
-window.clearAllTimeout = function(){
-  //clear all timeouts
-  while(timeoutIds.length){
+  // Store the timeout ID in the global array
+  timeoutIds.push(id);
+
+  // Return the timeout ID so it can be cleared if needed
+  return id;
+};
+
+// Function to clear all stored timeouts
+window.clearAllTimeout = function () {
+  // Loop through the stored timeout IDs and clear them
+  while (timeoutIds.length) {
     clearTimeout(timeoutIds.pop());
   }
-}
+};
 
-setTimeout(() => {console.log("hello")}, 2000);
-setTimeout(() => {console.log("hello1")}, 3000);
-setTimeout(() => {console.log("hello2")}, 4000);
-setTimeout(() => {console.log("hello3")}, 5000);
+// Scheduling multiple timeouts
+setTimeout(() => { console.log("hello"); }, 2000);
+setTimeout(() => { console.log("hello1"); }, 3000);
+setTimeout(() => { console.log("hello2"); }, 4000);
+setTimeout(() => { console.log("hello3"); }, 5000);
 
+// Clear all timeouts before they execute
 clearAllTimeout();

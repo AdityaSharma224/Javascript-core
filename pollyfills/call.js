@@ -1,4 +1,5 @@
-// The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter). This allows borrowing methods from other objects, executing them within a different context, overriding the default value, and passing arguments.
+// The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter). 
+// This allows borrowing methods from other objects, executing them within a different context, overriding the default value, and passing arguments.
 
 // let employee = {
 //     details: function (designation, experience) {
