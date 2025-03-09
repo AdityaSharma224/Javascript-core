@@ -1,0 +1,37 @@
+1. Data Upsertion (Storage)
+You store structured or unstructured data in a vector database. This typically involves:
+
+Embedding the Data:
+Convert text, images, or other data into numerical
+vectors using an embedding model (e.g., OpenAI's text-embedding-ada-002, FAISS, Pinecone, or Weaviate).
+Upserting the Data: The new data is either inserted if it’s new or updated 
+if an existing entry is similar.
+🔹 Example Process:
+
+Extract knowledge (conversation history, documents, etc.).
+Generate vector embeddings using a model.
+Store the embeddings in the vector database.
+2. Querying the Vector Database (Retrieval)
+When a user sends a query, you:
+
+Embed the query into a vector.
+Search the database using similarity metrics (e.g., cosine similarity, Euclidean distance, dot product).
+Retrieve the most relevant stored vectors.
+Use them as context for generating responses.
+🔹 Example Search Flow:
+
+Convert the query "What is AI memory?" into a vector.
+Search the vector database for the closest matches (similar vectors).
+Retrieve top N most relevant results.
+Pass the retrieved data as context to the AI model for response generation.
+3. Similarity Search Algorithms
+Vector databases use various methods to perform fast similarity searches:
+
+FAISS (Facebook AI Similarity Search): Fast, scalable approximate nearest neighbor search.
+HNSW (Hierarchical Navigable Small World Graphs): Efficient for large-scale searches.
+IVF (Inverted File Index): Partitions data for faster lookups.
+
+4. Real-World Use Cases
+Chatbots & AI Agents: Enhancing memory by recalling past conversations.
+Recommendation Systems: Finding similar products or content.
+Document Search: Retrieving relevant documents for knowledge-based systems.

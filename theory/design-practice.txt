@@ -1,0 +1,14 @@
+Evaluating a UI (What Makes a UI Good or Bad?)
+Good UI Principles:
+
+Clarity & Simplicity: The design should be intuitive, with a clear hierarchy.
+Consistency: Maintain uniformity in fonts, colors, spacing, and interactions.
+Accessibility: Ensure the UI is usable for people with disabilities (ARIA attributes, proper contrast, keyboard navigation).
+Performance: Fast-loading, smooth animations, and responsive design.
+Feedback & Error Handling: Proper validation, helpful error messages, and immediate user feedback.
+Bad UI Examples:
+
+Cluttered Design: Too much information or elements overwhelming the user.
+Inconsistent Interactions: Different styles and interactions for similar actions.
+Slow Performance: Heavy, unoptimized assets, blocking UI elements.
+Confusing Navigation: Hard-to-find elements, lack of breadcrumbs or back functionality.

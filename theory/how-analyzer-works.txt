@@ -1,3 +1,73 @@
-It's a desktop application - 
+Hi I am aditya, I am currently working at CAST as software developer - Full-stack role
+(But I am a frontend heavy here) for more than 1.5 year.
+Here I am leading the development of CAST imaging analyzer
+It's a desktop application and we using react and wails framework.
+Prevoiusly at contlo, i worked as backend intern basically with LLM and AI team.
+and before contlo I have also worked at GeeksforGeeks as MTS intern
+with core datastructures and algorithms team, and there I revamped technical content
+and authored widely read tutorials that is available on internet with no 1 google search results.
+and gathered over 1.8 million views collectivell.
+and I graduated from Chitkara Univeristy it's in punjab.
 
-The CAST Imaging Analyzer is designed to provide deep insights into your application technologies and composition with ease. Whether you're assessing system architecture or optimizing IT landscapes, it ensures accurate results and a seamless experience. Choose any of these options to use the analyzer.
+//Imaging analyzer
+CAST Imaging is unlike any other code analyzer:
+it’s like an examining your custom software applications,
+enabling you to visualize and understand their inner workings.
+You can use CAST Imaging to discover and document the makeup of an application,
+to assess the impact of changes you plan to make, or to identify opportunities
+to improve your application’s performance, reliability, or security.
+
+CAST Imaging runs a deep, semantic and contextual analysis of all artifacts
+comprising an application,identifies all its code elements and data structures,
+and maps out all their dependencies. CAST Imaging supports over 150 technologies,
+including Java/JEE, .NET, C#, Web, Mainframe, Web, SQL, NoSQL,
+
+Why wails ?
+Lightweight alternative of electron,earlier we were using electron but the things is
+with electron the final executable is very heavy but with wails is very small in size.
+and some other performance and efficiiency issues.
+
+why golang ?
+Go is compiled directly to machine code, efficient
+memory management other reason is cross platform
+single binary execution no need for JVM or runtime dependency
+
+It's a desktop application - 
+The CAST Imaging Analyzer is designed to provide deep insights 
+into your application technologies and composition with ease.
+so its very simple process
+1st step is to onboard your application you ca select folder that contains
+all your source code, database structure or libraries.
+2nd step after running the profiling analysis
+you discover and get an overview of your architecture obtain
+essential information for deep analysis.
+3rd step is deep analysis phase
+seamlessly discover the inner working of your application
+and easily analyze internal structure
+
+
+Brief-
+You can download the application from saas platform
+and there you will find a analyzer download page and you can download it form here
+There is a landing page and there is a place where you can authenticate yourself
+for authentication we are using keycloak open-source theme.
+then the main UI is divided into 2 parts the side stepper and the main body which is dynamic
+the side stepper shows you the real time progress of application.
+and we are doing routing based rendering and showing the steps.
+now you can onboard your application with this button and you can select any application
+and then we have a sorce code panel and twe designed this panlem with very precision
+so here basically you can exlcude or include files/directory of your choice.
+so its divieded into three parts you can perform inclusion/exclusion at directory level
+in first column and at file level in second column in third column basically
+you can filter out the file based on language/extensions and then we also have a block where
+we are listing the excluded files.
+now we can continue with fast scan
+so there is a job page where you will see the job progess
+and there are 2 steps
+1. content discovery where it discovers the content deeply and determinator service
+checks the language is supported or not. and last it will generate the results.
+and this page is very dynamic and shared between both fast scan and deep analysis
+after fast scan job page you will be redircted to this page which is
+fast scan results page and here you'll see a lot of data.
+and then there is deep analysis phase you will run the analysis and then after this
+job page you'll be redirected to deep analysis results.
