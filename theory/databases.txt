@@ -5,28 +5,43 @@ Scalability	Vertically scalable (upgrading hardware)	Horizontally scalable (addi
 Data Integrity	ACID-compliant (strong consistency)	BASE-compliant (more available, less consistent)
 Query Language	SQL (Structured Query Language)	Varies (e.g., MongoDB uses its own query language)
 Performance	Efficient for complex queries and transactions	Better for large-scale data and fast read/write operations
-Use Case	Best for transactional systems (banking, ERP, etc.)	Ideal for big data, real-time web apps, and data lakes
-Examples	MySQL, PostgreSQL, Oracle, MS SQL Server	MongoDB, Cassandra, CouchDB, Neo4j
+Use Case Best for transactional systems (banking, ERP, etc.)	Ideal for big data, real-time web apps, and data lakes
+ExamplesMySQL, PostgreSQL, Oracle, MS SQL Server	MongoDB, Cassandra, CouchDB, Neo4j
 
 
 What is SQL?
-SQL databases, also known as Relational Database Management Systems (RDBMS), use structured tables to store data. They rely on a predefined schema that determines the organization of data within tables, making them suitable for applications that require a fixed, consistent structure.
+SQL databases, also known as Relational Database Management Systems (RDBMS), 
+use structured tables to store data. They rely on a predefined schema that
+determines the organization of data within tables, making them suitable for
+applications that require a fixed, consistent structure.
 
-Structured Data: Data is organized in tables with rows and columns, making it easy to relate different types of information.
-ACID Compliance: SQL databases follow the ACID properties (Atomicity, Consistency, Isolation, Durability) to ensure reliable transactions and data integrity.
+Structured Data: Data is organized in tables with rows and columns, making it
+easy to relate different types of information.
+ACID Compliance: SQL databases follow the ACID properties (Atomicity, Consistency,
+Isolation, Durability) to ensure reliable transactions and data integrity.
 Examples: Popular SQL databases include MySQL, PostgreSQL, Oracle, and MS SQL Server.
 
 
 What is NoSQL?
-NoSQL databases, on the other hand, are designed to handle unstructured or semi-structured data. Unlike SQL databases, NoSQL offers dynamic schemas that allow for more flexible data storage, making them ideal for handling massive volumes of data from various sources.
-Flexible Schema: NoSQL databases allow the storage of data without a predefined structure, making them more adaptable to changing data requirements.
-CAP Theorem: NoSQL databases are designed based on the CAP theorem (Consistency, Availability, Partition Tolerance), which prioritizes availability and partition tolerance over strict consistency.
+NoSQL databases, on the other hand, are designed to handle unstructured or
+semi-structured data. Unlike SQL databases, NoSQL offers dynamic schemas
+that allow for more flexible data storage, making them ideal for handling
+massive volumes of data from various sources.
+Flexible Schema: NoSQL databases allow the storage of data without a predefined
+structure, making them more adaptable to changing data requirements.
+CAP Theorem: NoSQL databases are designed based on the CAP theorem (Consistency,
+Availability, Partition Tolerance), which prioritizes availability and partition tolerance over strict consistency.
 Examples: Well-known NoSQL databases include MongoDB, Cassandra, CouchDB, and HBase.
 
 
 SQL vs NoSQL: Which is Faster?
-SQL Databases: Generally, SQL databases perform well for complex queries, structured data, and systems requiring data consistency and integrity. However, as the volume of data grows, they may struggle with scalability and may require significant infrastructure upgrades.
-NoSQL Databases: NoSQL databases excel in scenarios that demand high performance and scalability. Because of their horizontal scalability (accommodating more servers), they handle large amounts of data and high-velocity workloads better. For instance, MongoDB or Cassandra is a common choice when dealing with big data or applications with high traffic.
+SQL Databases: Generally, SQL databases perform well for complex queries, structured
+data, and systems requiring data consistency and integrity. However, as the volume of
+data grows, they may struggle with scalability and may require significant infrastructure upgrades.
+NoSQL Databases: NoSQL databases excel in scenarios that demand high performance and
+scalability. Because of their horizontal scalability (accommodating more servers),
+they handle large amounts of data and high-velocity workloads better. For instance,
+MongoDB or Cassandra is a common choice when dealing with big data or applications with high traffic.
 
 
 When to Choose SQL?
@@ -43,3 +58,20 @@ You need to handle large, unstructured data sets, like social media data or logs
 The application requires horizontal scalability to accommodate high traffic and big data.
 There is a need for real-time data processing and flexible data models (e.g., a content management system).
 You are dealing with applications requiring frequent changes in data structures.
+
+When to Use a Vector Database?
+When you need semantic search (e.g., retrieving documents/images based on meaning).
+When working with AI and machine learning models that generate vector embeddings.
+When implementing recommendation systems, anomaly detection, or personalized experiences.
+
+What is Redis?
+Redis (Remote Dictionary Server) is an open-source, in-memory data store
+used as a database, cache, and message broker. It provides high-speed data
+access and is often used to improve application performance.
+
+Common Use Cases
+Caching – Storing frequently accessed data (e.g., session data, API responses).
+Real-time Analytics – High-speed operations for leaderboard ranking and analytics.
+Message Queue – Acts as a lightweight message broker with Pub/Sub.
+Rate Limiting – Controls API request limits for users.
+Session Management – Stores user sessions in web applications.
