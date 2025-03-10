@@ -45,6 +45,12 @@ essential information for deep analysis.
 seamlessly discover the inner working of your application
 and easily analyze internal structure
 
+//usecase
+CAST Imaging is used by enterprises for deep code analysis to visualize 
+application architecture, assess change impact, and improve performance, 
+reliability, and security, with adoption across industries like finance, 
+healthcare, and government.
+
 
 Brief-
 You can download the application from saas platform
