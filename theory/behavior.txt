@@ -32,6 +32,18 @@ detailed progress tracking to keep everyone informed, and making the
 most of async tools for collaboration. Over time, this helped me seamlessly 
 integrate into the team, improving my productivity and contribution to the project.
 
+Challenge: Enhancing long-term memory capabilities in AI models
+was a significant challenge, as the system often struggled 
+with response relevance and accuracy.
+Strategy: I tackled this by integrating vector storage databases 
+and optimizing retrieval mechanisms. Instead of relying on static 
+memory, I designed a more dynamic approach that improved response 
+relevance by 65%, ensuring better AI-driven interactions.
+
+"At each step, I focused on breaking down problems into smaller components,
+collaborating where necessary, and iterating towards an optimal solution.
+These experiences have strengthened my ability to approach complex challenges strategically."
+
 Why change ?
 To further enhance my skills, take on more challenging projects
 and contribute to some more impactful work.
@@ -47,18 +59,6 @@ linkedin is only social/proffesional platform where i am available.
 I do not have any instagram, facebook or snapchat.
 I see LinkedIn as an ideal place where I can contribute to impactful
 solutions that help millions of users connect, learn, and grow.
-
-Challenge: Enhancing long-term memory capabilities in AI models
-was a significant challenge, as the system often struggled 
-with response relevance and accuracy.
-Strategy: I tackled this by integrating vector storage databases 
-and optimizing retrieval mechanisms. Instead of relying on static 
-memory, I designed a more dynamic approach that improved response 
-relevance by 65%, ensuring better AI-driven interactions.
-
-"At each step, I focused on breaking down problems into smaller components,
-collaborating where necessary, and iterating towards an optimal solution.
-These experiences have strengthened my ability to approach complex challenges strategically."
 
 Next 5 years ?
 I totally see myself advancing into a senior or leadership role

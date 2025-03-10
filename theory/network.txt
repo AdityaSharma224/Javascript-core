@@ -32,6 +32,8 @@ Response Body (HTML, JSON, etc.)
 Rendering & Closing Connection – The browser processes the response,
 displays the webpage, and closes the connection if not using HTTP keep-alive.
 
+//---------------------------------------------------------------------------------------------------
+
 What is TCP (Transmission Control Protocol)?
 TCP (Transmission Control Protocol) is a reliable, connection-oriented
 protocol that ensures data is transmitted accurately and in the correct
@@ -48,22 +50,24 @@ the sender and receiver using a 3-way handshake:
 SYN (Synchronize) → Client sends a SYN packet to the server to initiate a connection.
 SYN-ACK (Synchronize-Acknowledge) → Server responds with SYN-ACK, confirming receipt.
 ACK (Acknowledge) → Client sends an ACK to complete the handshake.
-📌 After this, the connection is established, and data transfer begins.
+After this, the connection is established, and data transfer begins.
 
 2. TCP Data Transmission & Reliability Features
 Once a connection is established, TCP breaks data into packets and sends them to the receiver.
-
-✅ Key Features:
+//----------------------------------------------------------------------------------------------------
+Key Features:
 
 Segmentation: Large data is divided into smaller packets.
 Sequence Numbers: Each packet has a unique sequence number to ensure correct order.
 Acknowledgment (ACK): The receiver sends an acknowledgment for each received packet.
 Retransmission: If a packet is lost or corrupted, TCP automatically resends it.
 Flow Control: Uses a mechanism called Sliding Window Protocol to control data flow and prevent network congestion.
-
+//----------------------------------------------------------------------------------------------------
 
 When to Use What?
 Use HTTPS when you need stateless, secure, and reliable
 request-response communication (e.g., fetching website data).
 Use WebSocket when you need real-time, bidirectional,
 and low-latency communication (e.g., chat applications, live sports updates).
+
+//websockets
