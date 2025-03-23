@@ -8,7 +8,6 @@ Performance	Efficient for complex queries and transactions	Better for large-scal
 Use Case Best for transactional systems (banking, ERP, etc.)	Ideal for big data, real-time web apps, and data lakes
 ExamplesMySQL, PostgreSQL, Oracle, MS SQL Server	MongoDB, Cassandra, CouchDB, Neo4j
 
-
 What is SQL?
 SQL databases, also known as Relational Database Management Systems (RDBMS), 
 use structured tables to store data. They rely on a predefined schema that

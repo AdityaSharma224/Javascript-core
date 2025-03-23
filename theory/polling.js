@@ -35,7 +35,9 @@
 
 
 // 3. Server-Sent Events (SSE)
-// Server-Sent Events (SSE) is a technique where the server continuously sends updates to the client over a single HTTP connection. The client doesn't need to request updates; the server pushes them automatically.
+// Server-Sent Events (SSE) is a technique where the server continuously
+// sends updates to the client over a single HTTP connection.
+// The client doesn't need to request updates; the server pushes them automatically.
 
 // Example: A live sports score update application where the server sends real-time score updates to the client as they happen.
 // const eventSource = new EventSource('/events');

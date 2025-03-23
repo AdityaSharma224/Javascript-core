@@ -26,7 +26,6 @@
 //     context.fnc(...args);
 // }
 
-
 // let student = {
 //     details:function(section,rollnum){
 //         console.log( this.name + " " + this.class + " " + section + " " + rollnum);
@@ -40,32 +39,44 @@
 
 // student.details.newApply(stud1,['C',21])
 
-let students = {
-    details:function(section,rollnum){
-        console.log(this.name + " " + this.class + " " + section + " " + rollnum);
-    }
+// let students = {
+//     details:function(section,rollnum){
+//         console.log(this.name + " " + this.class + " " + section + " " + rollnum);
+//     }
+// }
+
+// Function.prototype.customApply = function(context,args){
+//     if(typeof this!== "function") throw new Error(this,'Invalid call');
+
+//     if (!Array.isArray(args)) {
+//         throw new Error('arguments are not in array');
+//     }
+//     context.fnc = this;
+//     context.fnc(...args);
+// }
+
+
+// let student = {
+//     details: function (section, rollnum) {
+//         console.log(this.name + " " + this.class + " " + section + " " + rollnum);
+//     }
+// }
+
+// let stud1 = {
+//     name: 'Aditya',
+//     class: '11th',
+// }
+
+// student.details.newApply(stud1, ['C', 21])
+
+function foo(secondName){
+    return this.name +' '+ secondName;
 }
 
-Function.prototype.customApply = function(context,args){
-    if(typeof this!== "function") throw new Error(this,'Invalid call');
-
-    if (!Array.isArray(args)) {
-        throw new Error('arguments are not in array');
-    }
-    context.fnc = this;
-    context.fnc(...args);
+let details = {
+    name:'Aditya'
 }
 
+let p = foo();
 
-let student = {
-    details: function (section, rollnum) {
-        console.log(this.name + " " + this.class + " " + section + " " + rollnum);
-    }
-}
-
-let stud1 = {
-    name: 'Aditya',
-    class: '11th',
-}
-
-student.details.newApply(stud1, ['C', 21])
+console.log(foo.apply(details,['sharma']));

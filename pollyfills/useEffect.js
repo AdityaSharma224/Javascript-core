@@ -1,117 +1,76 @@
-class myComponent extends React.Component {
-  componentDidMount() {
-  }
-  render() {
-    return
-    <>
+React Class Component Lifecycle Methods
+Class components in React have lifecycle methods that can be grouped into three phases:
 
-    </>;
-  }
-}
-
-
-class myComponent extends React.Component {
-  componentDidMount(prevProps, prevState) {
-    if (prevProps.someProp !== this.props.someProp) {
-      // code to run then 'someProp' changes
-    }
-  }
-  render() {
-    return <></>;
-  }
-}
-
+1️⃣ Mounting (Component Creation & Insertion)
+These methods run when the component is first added to the DOM.
 
 class MyComponent extends React.Component {
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      console.log('Tick');
-    }, 1000);
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+    console.log("Constructor");
   }
 
-  componentWillUnmount() {
-    clearInterval(this.interval); // Cleanup logic
+  componentDidMount() {
+    console.log("Component Mounted");
   }
 
   render() {
-    return <div>Timer is running</div>;
+    console.log("Render");
+    return <h1>Count: {this.state.count}</h1>;
   }
 }
 
+------------------------------------------------------------
 
-// Mounting phase
-// componentDidMount() {
-//   console.log('Component mounted');
-// }
+2️⃣ Updating (Re-rendering on State/Props Change)
+These methods run when props or state change.
 
+class MyComponent extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.count !== this.state.count; // Prevents unnecessary re-renders
+  }
 
-// Updating Phase
-// componentDidUpdate(prevProps, prevState, snapshot) {
-//   if (snapshot !== null) {
-//     window.scrollTo(0, snapshot);
-//   }
-// }
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Component Updated");
+  }
+}
 
-// Unmounting Phase
-// componentWillUnmount() {
-//   console.log('Component will unmount');
-// }
+-------------------------------------------------------------
 
-// Error handling
-// componentDidCatch(error, info) {
-//   console.error('Error:', error, info);
-// }
+3️⃣ Unmounting (Component Removal)
+These methods run when the component is removed from the DOM.
 
-// import React, { Component } from 'react';
+class MyComponent extends React.Component {
+  componentWillUnmount() {
+    console.log("Component Will Unmount");
+  }
+}
 
-// class Counter extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { counter: 0 };
-//     console.log('Constructor');
-//   }
+--------------------------------------------------------------
 
-//   static getDerivedStateFromProps(props, state) {
-//     console.log('getDerivedStateFromProps');
-//     return null;
-//   }
+4️⃣ Error Handling (Handling Crashes)
+Used to catch errors in child components.
 
-//   componentDidMount() {
-//     console.log('ComponentDidMount');
-//   }
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
-//   shouldComponentUpdate(nextProps, nextState) {
-//     console.log('ShouldComponentUpdate');
-//     return nextState.counter !== this.state.counter;
-//   }
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
 
-//   getSnapshotBeforeUpdate(prevProps, prevState) {
-//     console.log('GetSnapshotBeforeUpdate');
-//     return null;
-//   }
+  componentDidCatch(error, info) {
+    console.log("Error:", error, info);
+  }
 
-//   componentDidUpdate(prevProps, prevState, snapshot) {
-//     console.log('ComponentDidUpdate');
-//   }
-
-//   componentWillUnmount() {
-//     console.log('ComponentWillUnmount');
-//   }
-
-//   increment = () => {
-//     this.setState((prevState) => ({ counter: prevState.counter + 1 }));
-//   };
-
-//   render() {
-//     console.log('Render');
-//     return (
-//       <div>
-//         <h1>Counter: {this.state.counter}</h1>
-//         <button onClick={this.increment}>Increment</button>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Counter;
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong!</h1>;
+    }
+    return this.props.children;
+  }
+}
 
