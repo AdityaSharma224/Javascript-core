@@ -1,9 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
-//The useRef hook allows you to persist values between renders without triggering a re-render. Whether you’re dealing with DOM manipulation, storing previous values, or managing timers, useRef is an efficient solution.
 
-//The useRef allows to directly create a reference to the DOM element in the functional component.
+useRef is a React Hook that creates a mutable reference to store values without causing re-renders. It is commonly used for:
+✅ Accessing DOM elements
+✅ Persisting values across renders without re-rendering
+✅ Storing previous values
 
-//The main use of useRef hook is to access the DOM elements in a more efficient way as compared to simple refs. Since useRef hooks preserve value across various re-renders and do not cause re-renders whenever a value is changed they make the application faster and helps in caching and storing previous values
+// The useRef hook allows you to persist values between 
+// renders without triggering a re-render. Whether you’re 
+// dealing with DOM manipulation, storing previous values,
+// or managing timers, useRef is an efficient solution.
+
+// The useRef allows to directly create a reference to the DOM element in the functional component.
+
+// The main use of useRef hook is to access the DOM elements 
+// in a more efficient way as compared to simple refs. 
+// Since useRef hooks preserve value across various re-renders 
+// and do not cause re-renders whenever a value is changed they 
+// make the application faster and helps in caching and storing previous values
 
 // function useRefComponent() {
 //     const [count, setCount] = React.useState(0);
