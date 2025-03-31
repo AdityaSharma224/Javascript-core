@@ -1,82 +1,30 @@
-// The Function.prototype.apply() method allows you to call a function with a given this value and arguments provided as an array.
+// In JavaScript, the .apply() method is used to invoke a
+// function with a specified this value and arguments
+// provided as an array (or an array-like object).
 
-// let student = {
-//     details:function(section,rollnum){
-//         console.log( this.name + " " + this.class + " " + section + " " + rollnum);
-//     }
-// }
+const person1 = {name:'aditya'};
+const person2 = {name:'shubham'};
 
-// let stud1 = {
-//     name:'Aditya',
-//     class:'11th',
-// }
+function introduce(age){
+    return `Hi, I'm ${this.name} and I'm ${age} years old.`
+};
 
-// student.details.apply(stud1,['C',21])
+//polyfill
 
-// Function.prototype.newApply = function(context,args){
-//     if(typeof this !== "function"){
-//         throw new Error(this,'Invalid call');
-//     }
+Function.prototype.customApply = function(context,args){
+    if(typeof this !== "function"){
+        throw new Error(this,"Invalid Call");
+    }
 
-//     if(!Array.isArray(args)){
-//         throw new Error('arguments are not in array');
-//     }
+    if(!Array.isArray(args)){
+        throw new Error("args are are not in array");
+    }
+    // Assigning the Function to the Context Object
+    context.fnc = this; //this refers to the function that .newApply is being called on.
+    const result = context.fnc(...args); // Calling the Function with Spread Arguments
 
-//     context.fnc = this;
-//     context.fnc(...args);
-// }
+    delete context.fnc;
+    return result;
+};
 
-// let student = {
-//     details:function(section,rollnum){
-//         console.log( this.name + " " + this.class + " " + section + " " + rollnum);
-//     }
-// }
-
-// let stud1 = {
-//     name:'Aditya',
-//     class:'11th',
-// }
-
-// student.details.newApply(stud1,['C',21])
-
-// let students = {
-//     details:function(section,rollnum){
-//         console.log(this.name + " " + this.class + " " + section + " " + rollnum);
-//     }
-// }
-
-// Function.prototype.customApply = function(context,args){
-//     if(typeof this!== "function") throw new Error(this,'Invalid call');
-
-//     if (!Array.isArray(args)) {
-//         throw new Error('arguments are not in array');
-//     }
-//     context.fnc = this;
-//     context.fnc(...args);
-// }
-
-
-// let student = {
-//     details: function (section, rollnum) {
-//         console.log(this.name + " " + this.class + " " + section + " " + rollnum);
-//     }
-// }
-
-// let stud1 = {
-//     name: 'Aditya',
-//     class: '11th',
-// }
-
-// student.details.newApply(stud1, ['C', 21])
-
-function foo(secondName){
-    return this.name +' '+ secondName;
-}
-
-let details = {
-    name:'Aditya'
-}
-
-let p = foo();
-
-console.log(foo.apply(details,['sharma']));
+console.log(introduce.customApply(person1,[22]));
