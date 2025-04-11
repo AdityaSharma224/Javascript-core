@@ -1,14 +1,18 @@
-// Custom implementation of a memoization hook-like function
-function useMyMemo(fn, dependencies) {
-    // Compute the initial result by calling the provided function
-    let result = fn();
+import {useRef} from "react"; // useRef to persist previous dependencies and computed value across renders.
 
-    // Store the previous dependencies for comparison
-    let prevDependencies = dependencies;
+function useMyMemo(fn,dependency){
 
-    // Check if any dependency has changed by comparing each value
-    if (!dependencies.every((val, i) => val === prevDependencies[i])) {
-        // If dependencies change, recompute the result
-        result = fn();
+    // store the memoized result and previous dependencies in a ref
+    const ref = useRef({result:null,dependency:[]});
 
-// Update previous dependencies to the new ones
+    // Check if any dependency has changed
+    if(!ref.current.dependency || 
+        ref.current.dependency.length !== dependency.length ||
+       !ref.current.dependency.every((val,i)=>val===dependency[i]) // Check if any dependency has changed by comparing each value
+    ){
+        
+        ref.current.result = fn();
+        ref.current.dependency = dependency;
+    }
+    return ref.current.result;
+}

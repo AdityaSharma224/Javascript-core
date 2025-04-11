@@ -17,7 +17,7 @@ class MyComponent extends React.Component {
 
   render() {
     console.log("Render");
-    return <h1>Count: {this.state.count}</h1>;
+    return <h1>Cou nt: {this.state.count}</h1>;
   }
 }
 

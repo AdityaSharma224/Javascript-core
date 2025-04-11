@@ -1,4 +1,5 @@
-// .map() is very much similar to .forEach() method, except, instead of returning items out of the array, it return the array itself
+// .map() is very much similar to .forEach() method, except,
+// instead of returning items out of the array, it return the array itself
 
 const array = [1, 2, 3, 4, 5, 6, 7];
 
@@ -11,24 +12,6 @@ const array = [1, 2, 3, 4, 5, 6, 7];
 //     return newArray;
 // }
 
-// with error handling
-
-// Array.prototype.newMap = function(callback, thisArg) {
-//     if (typeof callback !== "function") {
-//         throw new TypeError(`${callback} is not a function`);
-//     }
-
-//     const newArray = [];
-//     for (let i = 0; i < this.length; i++) {
-//         if (i in this) { // Handle sparse arrays
-//             newArray.push(callback.call(thisArg, this[i], i, this));
-//         }
-//     }
-//     return newArray;
-// };
-
-//array.map((value, index, array) => { /* ... */ });
-
 Array.prototype.customMap = function (callBack, thisArg) {
 
     if (typeof callBack !== "function") {
@@ -37,6 +20,8 @@ Array.prototype.customMap = function (callBack, thisArg) {
     const newArray = [];
     for (let i = 0; i < this.length; i++) {
         if (i in this) {
+            // The .call() method allows us to explicitly set this inside callBack.
+            // This ensures that the callback function executes in the correct context.
             newArray.push(callBack.call(thisArg, this[i], i, this));
         }
     }

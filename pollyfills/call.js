@@ -1,53 +1,27 @@
-// The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter). 
-// This allows borrowing methods from other objects, executing them within a different context, overriding the default value, and passing arguments.
+// The call() method is a predefined JavaScript method. 
+// It can be used to invoke (call) a method with an owner object as an argument (parameter). 
+// This allows borrowing methods from other objects, 
+// executing them within a different context, overriding the default value, and passing arguments.
 
-// let employee = {
-//     details: function (designation, experience) {
-//         return this.name
-//             + " "
-//             + this.id
-//             + designation
-//             + experience;
-//     }
-// }
+const person1 = {name:'aditya'};
+const person2 = {name:'shubham'};
 
-// // Objects declaration
-// let emp1 = {
-//     name: "A",
-//     id: "123",
-// }
-// let emp2 = {
-//     name: "B",
-//     id: "456",
-// }
-// let x = employee.details.call(emp2, " Manager ", "4 years");
-// console.log(x);
+function introduce(age){
+    return `Hi, I'm ${this.name} and I'm ${age} years old.`
+};
 
-// function name(city){
-//     console.log(`${this.name} name and place is ${city}`);
-// }
-
-// const objName= {
-//     name:'rahul'
-// }
-
-// name.call(objName,'gwalior');
-
-Function.prototype.newCall = function(context,...args){
+//polyfill
+Function.prototype.customCall = function(context,...args){
     if(typeof this !== "function"){
-        throw new Error(this,"invalid call");
+        throw new Error(this,"Invalid Call");
     }
 
-    context.fnc = this;
-    context.fnc(...args);
-}
+    // Assigning the Function to the Context Object
+    context.fnc = this; //this refers to the function that .newApply is being called on.
+    const result = context.fnc(...args); // Calling the Function with Spread Arguments
 
-function name(city){
-    console.log(`${this.name} name and place is ${city}`);
-}
+    delete context.fnc;
+    return result;
+};
 
-const objName = {
-    name:'Aditya'
-}
-
-name.newCall(objName,'Rohtak')
+console.log(introduce.customCall(person1,22));

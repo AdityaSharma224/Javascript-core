@@ -2,9 +2,11 @@
 
 const arr = [1,2,3,4,5,6,7,8];
 
-Array.prototype.newFilter = function(callback){
+const filteredArray = arr.filter(item=>item%2==0);
+
+Array.prototype.customFilter = function(callback){
     let output = [];
-    for(let i=0;i<this.length;i++){
+    for(let i =0;i<this.length;i++){
         if(callback(this[i])){
             output.push(this[i]);
         }
@@ -12,6 +14,5 @@ Array.prototype.newFilter = function(callback){
     return output;
 }
 
-const filteredArray = arr.newFilter(item => item%2);
-
-console.log('ans',filteredArray);
+const newoutput = arr.customFilter(item=>item%2==0);
+console.log('arr',newoutput);
