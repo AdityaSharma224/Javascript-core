@@ -1,3 +1,8 @@
+Memoization in React is a technique used to optimize the performance of functional components by caching 
+the results of expensive computations or function calls. It's particularly useful when dealing
+with computationally intensive or frequently called functions with the same input values,
+as it helps avoid redundant calculations and improves the overall efficiency of the application.
+
 import {useRef} from "react"; // useRef to persist previous dependencies and computed value across renders.
 
 function useMyMemo(fn,dependency){
@@ -16,3 +21,29 @@ function useMyMemo(fn,dependency){
     }
     return ref.current.result;
 }
+
+import React, { useMemo } from 'react';
+
+function App() {
+  const [count, setCount] = React.useState(0);
+  const [otherState, setOtherState] = React.useState('');
+
+  const expensiveComputation = (num) => {
+    let i =  0;
+    while (i <  1000000000) i++;
+    return num * num;
+  };
+
+  const memoizedValue = useMemo(() => expensiveComputation(count), [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <p>Square: {memoizedValue}</p>
+      <button onClick={() => setCount(count +  1)}>Increase Count</button>
+      <input type="text" onChange={(e) => setOtherState(e.target.value)} />
+    </div>
+  );
+}
+
+export default App;
