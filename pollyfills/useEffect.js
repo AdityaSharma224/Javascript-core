@@ -1,3 +1,33 @@
+The useEffect Hook allows you to perform side effects in your components.
+Some examples of side effects are: fetching data, directly updating the DOM, and timers. useEffect accepts two arguments.
+
+import { useEffect, useRef } from 'react';
+import isEqual from 'lodash.isequal'; // Use lodash for deep comparison
+
+function useCustomEffect(fn, deps) {
+  const cleanupRef = useRef();
+  const prevDepsRef = useRef();
+
+  useEffect(() => {
+    // Compare previous and current dependencies
+    if (prevDepsRef.current && isEqual(prevDepsRef.current, deps)) {
+      return; // Dependencies unchanged, skip effect
+    }
+
+    prevDepsRef.current = deps;
+
+    if (cleanupRef.current) {
+      cleanupRef.current(); // Run cleanup of previous effect
+    }
+
+    const cleanup = fn(); // Run the new effect
+    if (typeof cleanup === 'function') {
+      cleanupRef.current = cleanup;
+    }
+  }, [deps]);
+}
+
+
 React Class Component Lifecycle Methods
 Class components in React have lifecycle methods that can be grouped into three phases:
 
