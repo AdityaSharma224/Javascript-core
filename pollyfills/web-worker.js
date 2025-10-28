@@ -1,3 +1,11 @@
+// when the web page is being rendered js executes multiple tasks
+// -manipulating DOM
+// -managing UI Interface
+// -handle api response time
+
+// ellivate the burden on main thread allow the execution of scripts
+// in the background on separate thread
+
 import React, { useEffect, useRef } from 'react';
 
 function MyComponent() {

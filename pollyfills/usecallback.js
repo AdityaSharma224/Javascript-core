@@ -1,9 +1,9 @@
-useCallback returns a memoized version of a callback function that only changes if its dependencies change. 
-This is especially useful when passing functions to child components, preventing unnecessary re-renders.
+// useCallback returns a memoized version of a callback function that only changes if its dependencies change. 
+// This is especially useful when passing functions to child components, preventing unnecessary re-renders.
 
-You're passing functions to memoized children (React.memo, useMemo, etc.)
-You're setting up event handlers or callback refs
-You're building custom hooks that depend on stable function references
+// You're passing functions to memoized children (React.memo, useMemo, etc.)
+// You're setting up event handlers or callback refs
+// You're building custom hooks that depend on stable function references
 
 import { useRef } from 'react';
 
