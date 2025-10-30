@@ -2,21 +2,25 @@ Career history -
 
 So currently I am working in Zomato as Frontend developer and it's been 3 months
 I am basically part of nugget team that takes care of or handles the customer support of zomato and blinkit.
-earlier it was yes one support but since the product has lot of potential so now it's available for other clients as well
-and we are providing this serivce to other businesses as well in subscription basis. so here I am
+earlier it was yes one support but since the product has lot of potential so now it's available for other 
+clients as well and we are providing this serivce to other businesses as well in subscription basis. so here I am
 working on new projects and client requirements. So here I built few things lifeline support is one the
-project,so it's a dashboard support that I built for one of our client so we provide out agent with all customer information
-contexually in real time, so basically here we are saving a lot of manual lookup time and efforts.
-as conversation progress between agents and customer the dashboard dynamically adapt UI components. so all this for faster decision making
-here we reduced overall ticket resolution time significantly by enhancing information accessibility and minimizing back-and-forth queries.
-and before zomato I have also worked at CAST, Bengaluru as frontend developer that was the first time when I worked exclusively
+project,so it's a dashboard support that I built for one of our client so we provide out agent with all
+customer information contexually in real time, so basically here we are saving a lot of manual lookup time
+and efforts. as conversation progress between agents and customer the dashboard dynamically adapt UI components. 
+so all this for faster decision making here we reduced overall ticket resolution time significantly by enhancing 
+information accessibility and minimizing back-and-forth queries. and before zomato I have also worked 
+at CAST, Bengaluru as frontend developer that was the first time when I worked exclusively
 on frontend and yeah I was specifically hired to build a desktop application UI from the very scratch.
 So that desktop application I built using react js and for OS executable we'have used wails framework.
-So yes i was kind of founding UI developer of that application and apart from this I have also revamped there SaaS application UI. I worked there for almost 1 year 11 months. and before all this I also did some internships one in contlo as backend intern for 3 months and one in geeksforgeeks as MTS intern for 7 months there I worked under core DSA team and that was probably my best experience. So all these internships i completed in college time.
+So yes i was kind of founding UI developer of that application and apart from this I have also revamped 
+there SaaS application UI. I worked there for almost 1 year 11 months. and before all this I also did 
+some internships one in contlo as backend intern for 3 months and one in geeksforgeeks as MTS intern 
+for 7 months there I worked under core DSA team and that was probably my best experience. So all these 
+internships i completed in college time.
 
 challenging task ?
 
-That's probably the recent feature I shipped in nugget the lifeline dashboard becase to display data contexually on ui there are so many ways to do that. but again we had to choose the easy and most efficient approach.
 Challenge: One of the biggest challenges I faced was adapting to 
 an international team. Working across different time zones, 
 coordinating with diverse stakeholders, and aligning with global 
@@ -28,7 +32,7 @@ detailed progress tracking to keep everyone informed, and making the
 most of async tools for collaboration. Over time, this helped me seamlessly 
 integrate into the team, improving my productivity and contribution to the project.
 
-Challenge: Enhancing long-term memory capabilities in AI models
+Challenge : Enhancing long-term memory capabilities in AI models
 was a significant challenge, as the system often struggled 
 with response relevance and accuracy.
 Strategy: I tackled this by integrating vector storage databases 
