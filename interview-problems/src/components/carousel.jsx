@@ -38,7 +38,7 @@ function Carousel() {
     );
   };
 
-  const handleNext = () => {
+  const handleNext = () => { 
     setCurrentImage((prevImage) =>
       prevImage === images.length - 1 ? 0 : prevImage + 1
     );

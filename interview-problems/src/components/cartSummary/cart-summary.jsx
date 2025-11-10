@@ -25,7 +25,7 @@ export default function CartSummary() {
       <p>Total Price: ${totalPrice}</p>
 
       <button
-        onClick={() =>
+        onClick={() => 
           setCartItems((prev) =>
             prev.map((item) =>
               item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item

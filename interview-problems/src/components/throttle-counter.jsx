@@ -5,14 +5,25 @@ import React, { useState, useEffect, useCallback } from "react";
 function ThrottleCounter() {
   const [count, setCount] = useState(0);
 
-  const throttle = (func, limit) => {
+  // const throttle = (func, limit) => {
+  //   let inThrottle;
+  //   return (...args) => {
+  //     if (!inThrottle) {
+  //       func(...args);
+  //       inThrottle = true;
+  //       setTimeout(() => (inThrottle = false), limit);
+  //     }
+  //   };
+  // };
+
+  const throttle = (func, limit)=>{
     let inThrottle;
-    return (...args) => {
-      if (!inThrottle) {
+    return function(...args){
+      if(!inThrottle){
         func(...args);
         inThrottle = true;
-        setTimeout(() => (inThrottle = false), limit);
-      }
+        setTimeout(()=>(inThrottle = false), limit);
+      };
     };
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Stopwatch = () => {
   const [time, setTime] = useState(0); // in seconds
@@ -30,6 +30,13 @@ const Stopwatch = () => {
     const secs = String(t % 60).padStart(2, '0');
     return `${mins}:${secs}`;
   };
+
+  useEffect(()=>{
+    start();
+    return ()=>{
+      clearInterval(intervalRef.current);
+    }
+  },[]);
 
   return (
     <div className="p-4 text-center">

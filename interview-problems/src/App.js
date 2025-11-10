@@ -34,13 +34,14 @@ import React from 'react';
 // import VirtualizedTable from './components/tableComponent/table-component';
 // import CartSummary from './components/cartSummary/cart-summary';
 // import ImageGrid from './components/lazy-load-image/lazy-load-image';
-import Snackbar from './components/snackbar/snackbar';
+// import Snackbar from './components/snackbar/snackbar';
+import Stopwatch from './components/stopwatch';
 
 function App() {
 
   return (
     <div>
-      <Snackbar />
+      <Stopwatch />
     </div>
   );
 }
