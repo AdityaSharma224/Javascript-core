@@ -9,7 +9,7 @@ import React from 'react';
 // import Pagination from './components/pagination';
 // import ApiPractice from './components/api-practice';
 // import Counter from './components/counter';
-import UseRefComponent from './components/useRef';
+// import UseRefComponent from './components/useRef';
 // import UseContextComponent from './components/useContext';
 // import DarkLightToogle from './components/dark-light-mode';
 // import UseReducerComponent from './components/useReducer';
@@ -21,12 +21,26 @@ import UseRefComponent from './components/useRef';
 // import FileFolderStructure from './components/folder-file-structure-vs-code';
 // import UndoCalculator from './components/undo-cal';
 // import InfinteScroll from './components/infinte-scroll';
+// import ProgressBar from './components/progress-bar/progressBar'
+// import ToDoList from './components/todo-List/todo-list';
+// import Chip from './components/chips/chips';
+// import Accordion from './components/accordion/accordion';
+// import OtpFiller from './components/otp/otp';
+// import FileExplorer from './components/file-explorer/fileExplorer';
+// import Pagination from './components/pagination/pagination';
+// import AutoCompleteBar from './components/auto-complete-bar/auto-complete-search-bar';
+// import TabForm from './components/tab-form/tabForm';
+// import CustomForm from './components/form/form';
+// import VirtualizedTable from './components/tableComponent/table-component';
+// import CartSummary from './components/cartSummary/cart-summary';
+// import ImageGrid from './components/lazy-load-image/lazy-load-image';
+import Snackbar from './components/snackbar/snackbar';
 
 function App() {
 
   return (
-    <div >
-      <UseRefComponent />
+    <div>
+      <Snackbar />
     </div>
   );
 }
