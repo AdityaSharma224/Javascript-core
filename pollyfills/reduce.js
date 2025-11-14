@@ -33,17 +33,30 @@ function addition(accumulator, current) {
 
 // console.log(sum)
 
-Array.prototype.customReduce = function(callBack,initialValue){
+// Array.prototype.customReduce = function(callBack,initialValue){
+//     var accumulator = initialValue === undefined ? undefined : initialValue;
+//     for(let i=0;i<this.length;i++){
+//         if(accumulator!==undefined){
+//             accumulator = callBack.call(undefined,accumulator,this[i],i,this);
+//         }else{
+//             accumulator = this[i];
+//         }
+//     }
+//     return accumulator;
+// }
+
+const sum = array.customReduce((acc,curr)=>acc+curr,0);
+console.log('sum',sum);
+
+
+Array.prototype.customReduce = function(callBack, initialValue){
     var accumulator = initialValue === undefined ? undefined : initialValue;
     for(let i=0;i<this.length;i++){
         if(accumulator!==undefined){
-            accumulator = callBack.call(undefined,accumulator,this[i],i,this);
+            accumulator = callBack.call(undefined, accumulator, this[i],i,this);
         }else{
             accumulator = this[i];
         }
     }
     return accumulator;
 }
-
-const sum = array.customReduce((acc,curr)=>acc+curr,0);
-console.log('sum',sum);

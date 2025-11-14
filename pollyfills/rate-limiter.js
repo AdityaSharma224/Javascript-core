@@ -1,40 +1,40 @@
 class RateLimiter {
-  constructor({ maxRequests, perMilliseconds }) {
-    this.maxRequests = maxRequests;
-    this.perMilliseconds = perMilliseconds;
-    this.tokens = maxRequests;
+  constructor(maxRequests, windowMs) {
+    this.maxRequests = maxRequests; // e.g. 5
+    this.windowMs = windowMs; // e.g. 1000ms = 1 sec
     this.queue = [];
-
-    setInterval(() => {
-      this.tokens = this.maxRequests;
-      this._processQueue();
-    }, this.perMilliseconds);
+    this.timestamps = [];
   }
 
-  _processQueue() {
-    while (this.tokens > 0 && this.queue.length > 0) {
-      const { resolve } = this.queue.shift();
-      this.tokens--;
-      resolve();
-    }
-  }
+  async schedule(fn) {
+    return new Promise((resolve, reject) => {
+      const execute = async () => {
+        try {
+          const now = Date.now();
+          this.timestamps = this.timestamps.filter(
+            (t) => now - t < this.windowMs
+          );
 
-  async acquireToken() {
-    if (this.tokens > 0) {
-      this.tokens--;
-      return Promise.resolve();
-    }
+          if (this.timestamps.length >= this.maxRequests) {
+            // Wait until next slot is free
+            const delay = this.windowMs - (now - this.timestamps[0]);
+            setTimeout(execute, delay);
+            return;
+          }
 
-    return new Promise((resolve) => {
-      this.queue.push({ resolve });
+          this.timestamps.push(Date.now());
+          const result = await fn();
+          resolve(result);
+        } catch (err) {
+          reject(err);
+        }
+      };
+
+      execute();
     });
   }
-
-  /**
-   * Wrap any async function, like fetch or axios.
-   */
-  async schedule(fn, ...args) {
-    await this.acquireToken();
-    return fn(...args);
-  }
 }
+
+
+const limiter = new RateLimiter(5, 1000);
+

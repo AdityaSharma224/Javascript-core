@@ -30,3 +30,19 @@ Array.prototype.customMap = function (callBack, thisArg) {
 
 const transform = array.customMap(item => item * 2);
 console.log('ans', transform);
+
+
+Array.prototype.myMap = function(callback, thisArg){
+
+    if(typeof callback !== "function"){
+        throw new TypeError(`${callback} is not a function`)
+    }
+
+    const newArray = [];
+    for(let i=0;i<this.length;i++){
+        if(i in this){
+            newArray.push(callback.call(thisArg, this[i], i, this));
+        }
+    }
+    return newArray;
+}
