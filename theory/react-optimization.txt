@@ -70,12 +70,20 @@ Below are the most effective optimizations.
 
 🌐 A. Optimize JavaScript (Most Important)
 1. Reduce bundle size
-
 Use code splitting
 Use dynamic imports
 Remove unused polyfills
 Use tree shaking
 Avoid large libraries (e.g., moment.js → dayjs)
+
+As websites grow larger and go deeper into components, it becomes heavier. This is especially the 
+case when libraries from third parties are included. Code Splitting is a method that helps to 
+generate bundles that are able to run dynamically. It also helps to make the code efficient 
+because the bundle contains all required imports and files.
+
+Bundling and its efficiency: Bundling is the method of combining imported files with a single file. 
+It is done with the help of Webpack, Rollup, and Browserify as they can create many bundles that can be loaded dynamically at runtime.
+With the help of code splitting, 'lazy load' can be implemented, which means just using the code which is currently needed.
 
 2. Minimize re-renders in React
 Wrap components in React.memo
