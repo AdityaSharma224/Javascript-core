@@ -24,3 +24,7 @@ const objIntro ={
 
 // let x = sayIntro.newBind(objIntro,['cast','banglore'])
 // x()
+
+Function.prototype.call,myBind = function(context,args){
+    
+}

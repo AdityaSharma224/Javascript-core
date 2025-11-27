@@ -27,4 +27,4 @@ Function.prototype.customApply = function(context,args){
     return result;
 };
 
-console.log(introduce.customApply(person1,[22]));
+console.log(introduce.myCall(person1,[25]));

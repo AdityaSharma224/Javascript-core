@@ -11,7 +11,7 @@ console.log(counter.increment()); // 1
 console.log(counter.get());       // 1
 
 
-You can't access count directly — only through the returned methods.
+// You can't access count directly — only through the returned methods.
 
 function memoize(fn) {
   const cache = {};

@@ -9,22 +9,10 @@ const SearchComponent = () => {
     // In a real application, you would make an API request here
   };
 
-  // // Debounce function to delay the searchAPI call
-  // const debounce = (func, delay) => {
-  //   let timeoutId;
-  //   return function (...args) {
-  //     clearTimeout(timeoutId);
-  //     timeoutId = setTimeout(() => {
-  //       func(...args);
-  //     }, delay);
-  //   };
-  // };
-
-
-  const debounce = (func, delay)=>{
+  // Debounce function to delay the searchAPI call
+  const debounce = (func, delay) => {
     let timeoutId;
-
-    return function(...args){
+    return function (...args) {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         func(...args);

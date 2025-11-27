@@ -1,4 +1,7 @@
-// JavaScript Promises make handling asynchronous operations like API calls, file loading, or time delays easier. Think of a Promise as a placeholder for a value that will be available in the future. It can be in one of three states
+// JavaScript Promises make handling asynchronous operations like API calls, 
+// file loading, or time delays easier. Think of a Promise as a placeholder 
+// for a value that will be available in the future. It can be in one of three states
+
 // let checkEven = new Promise((resolve, reject) => {
 //     let num = 3;
 //     if (num % 2 === 0) resolve('This num is even!');
