@@ -1,55 +1,18 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-const Snackbar = () => {
-  const [snacks, setSnacks] = useState([]);
-  const [pausedIds, setPausedIds] = useState(new Set());
-  const idCounter = useRef(0);
 
-  const addSnack = useCallback((message, type = 'info', duration = 4000) => {
-    const id = idCounter.current++;
-    setSnacks(prev => [...prev, { id, message, type, duration }]);
-  }, []);
-
-  const removeSnack = useCallback(id => {
-    setSnacks(prev => prev.filter(s => s.id !== id));
-    setPausedIds(prev => {
-      const copy = new Set(prev);
-      copy.delete(id);
-      return copy;
-    });
-  }, []);
-
-  const handleMouseEnter = useCallback(id => {
-    setPausedIds(prev => new Set(prev).add(id));
-  }, []);
-
-  const handleMouseLeave = useCallback(id => {
-    setPausedIds(prev => {
-      const copy = new Set(prev);
-      copy.delete(id);
-      return copy;
-    });
-  }, []);
-
-  return (
-    <div style={{ minHeight: '100vh', padding: 32, background: '#f9fafb' }}>
-      <h1 style={{ fontSize: 24, fontWeight: 600, marginBottom: 16 }}>Snackbar Demo</h1>
-      <div style={{ display: 'flex', gap: 12 }}>
-        <button onClick={() => addSnack('Success!', 'success')}>Success</button>
-        <button onClick={() => addSnack('Error occurred', 'error')}>Error</button>
-        <button onClick={() => addSnack('Warning issued', 'warning')}>Warning</button>
-        <button onClick={() => addSnack('Info update', 'info')}>Info</button>
-      </div>
-
-      <SnackbarContainer
-        snacks={snacks}
-        pausedIds={pausedIds}
-        onRemove={removeSnack}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      />
-    </div>
-  );
+const getColors = type => {
+  switch (type) {
+    case 'success':
+      return { bg: '#16a34a', border: '#15803d' };
+    case 'error':
+      return { bg: '#dc2626', border: '#b91c1c' };
+    case 'warning':
+      return { bg: '#ca8a04', border: '#a16207' };
+    case 'info':
+    default:
+      return { bg: '#2563eb', border: '#1d4ed8' };
+  }
 };
 
 const SnackbarContainer = ({ snacks, pausedIds, onRemove, onMouseEnter, onMouseLeave }) => (
@@ -164,18 +127,56 @@ const SnackbarItem = ({ snack, onRemove, isPaused, onMouseEnter, onMouseLeave })
   );
 };
 
-const getColors = type => {
-  switch (type) {
-    case 'success':
-      return { bg: '#16a34a', border: '#15803d' };
-    case 'error':
-      return { bg: '#dc2626', border: '#b91c1c' };
-    case 'warning':
-      return { bg: '#ca8a04', border: '#a16207' };
-    case 'info':
-    default:
-      return { bg: '#2563eb', border: '#1d4ed8' };
-  }
+const Snackbar = () => {
+  const [snacks, setSnacks] = useState([]);
+  const [pausedIds, setPausedIds] = useState(new Set());
+  const idCounter = useRef(0);
+
+  const addSnack = useCallback((message, type = 'info', duration = 4000) => {
+    const id = idCounter.current++;
+    setSnacks(prev => [...prev, { id, message, type, duration }]);
+  }, []);
+
+  const removeSnack = useCallback(id => {
+    setSnacks(prev => prev.filter(s => s.id !== id));
+    setPausedIds(prev => {
+      const copy = new Set(prev);
+      copy.delete(id);
+      return copy;
+    });
+  }, []);
+
+  const handleMouseEnter = useCallback(id => {
+    setPausedIds(prev => new Set(prev).add(id));
+  }, []);
+
+  const handleMouseLeave = useCallback(id => {
+    setPausedIds(prev => {
+      const copy = new Set(prev);
+      copy.delete(id);
+      return copy;
+    });
+  }, []);
+
+  return (
+    <div style={{ minHeight: '100vh', padding: 32, background: '#f9fafb' }}>
+      <h1 style={{ fontSize: 24, fontWeight: 600, marginBottom: 16 }}>Snackbar Demo</h1>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <button onClick={() => addSnack('Success!', 'success')}>Success</button>
+        <button onClick={() => addSnack('Error occurred', 'error')}>Error</button>
+        <button onClick={() => addSnack('Warning issued', 'warning')}>Warning</button>
+        <button onClick={() => addSnack('Info update', 'info')}>Info</button>
+      </div>
+
+      <SnackbarContainer
+        snacks={snacks}
+        pausedIds={pausedIds}
+        onRemove={removeSnack}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      />
+    </div>
+  );
 };
 
 export default Snackbar;
