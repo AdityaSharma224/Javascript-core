@@ -27,7 +27,7 @@ import React from 'react';
 // import Accordion from './components/accordion/accordion';
 // import OtpFiller from './components/otp/otp';
 // import FileExplorer from './components/file-explorer/fileExplorer';
-// import Pagination from './components/pagination/pagination';
+import Pagination from './components/pagination/pagination';
 // import AutoCompleteBar from './components/auto-complete-bar/auto-complete-search-bar';
 // import TabForm from './components/tab-form/tabForm';
 // import CustomForm from './components/form/form';
@@ -35,13 +35,13 @@ import React from 'react';
 // import CartSummary from './components/cartSummary/cart-summary';
 // import ImageGrid from './components/lazy-load-image/lazy-load-image';
 // import Snackbar from './components/snackbar/snackbar';
-import Stopwatch from './components/stopwatch';
+// import Stopwatch from './components/stopwatch';
 
 function App() {
 
   return (
     <div>
-      <Stopwatch />
+      <Pagination />
     </div>
   );
 }

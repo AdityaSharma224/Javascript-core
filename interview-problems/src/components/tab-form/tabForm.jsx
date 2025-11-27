@@ -1,66 +1,64 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo, memo } from "react";
 
-const Profile = () => {
-  return <div>Profile</div>;
+// 👇 Child components wrapped with React.memo 
+const Profile = memo(() => <div>Profile</div>);
+const Interests = memo(() => <div>Interests</div>);
+const Settings = memo(() => <div>Settings</div>);
+
+const TAB_STYLES = {
+  padding: "5px",
+  border: "1px solid #000",
+  cursor: "pointer",
 };
 
-const Interests = () => {
-  return <div>Interests</div>;
-};
-
-const Settings = () => {
-  return <div>Settings</div>;
+const ACTIVE_TAB_STYLES = {
+  ...TAB_STYLES,
+  backgroundColor: "#eee",
+  fontWeight: "bold",
 };
 
 const TabForm = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const tabs = [
-    {
-      name: "Profile",
-      component: Profile,
-    },
-    {
-      name: "Interests",
-      component: Interests,
-    },
-    {
-      name: "Settings",
-      component: Settings,
-    },
-  ];
+
+  // 👇 useMemo so tabs object isn’t re-created on every render
+  const tabs = useMemo(
+    () => [
+      { name: "Profile", component: Profile },
+      { name: "Interests", component: Interests },
+      { name: "Settings", component: Settings },
+    ],
+    []
+  );
 
   const ActiveComponent = tabs[activeTab].component;
 
   return (
     <div>
+      {/* ---- TABS HEADER ---- */}
       <div style={{ display: "flex" }}>
-        {tabs.map((tabs, index) => (
+        {tabs.map(({ name }, idx) => (
           <div
-            key={index}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              padding: "5px",
-              border: "1px solid #000",
-              cursor: "pointer",
-            }}
-            onClick={() => setActiveTab(index)}
+            key={name}
+            style={idx === activeTab ? ACTIVE_TAB_STYLES : TAB_STYLES}
+            onClick={() => setActiveTab(idx)}
           >
-            {tabs.name}
+            {name}
           </div>
         ))}
       </div>
+
+      {/* ---- TAB CONTENT ---- */}
       <div
-      style={{
-        padding:'10px',
-        border:'1px solid #000',
-        height:'400px',
-      }}
+        style={{
+          padding: "10px",
+          border: "1px solid #000",
+          height: "400px",
+        }}
       >
-        <ActiveComponent/>
+        <ActiveComponent />
       </div>
     </div>
   );
 };
 
-export default TabForm;
+export default memo(TabForm);
