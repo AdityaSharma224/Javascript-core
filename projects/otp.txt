@@ -1,0 +1,59 @@
+OTP - 
+Situtaion was - Users were repeatedly requesting OTP's, causing load on
+authentication service. so the task was to introduce a reliable controlled
+resend OTP flow.
+I developed and deployed a resend OTP feature a 30 second cooldown.
+that resulted in improved login success rate and now user won't be able to spam with requets.
+
+How it works ?
+Backend generates OTP, sets a cooldown timer, and emails the OTP.
+Frontend reads coolDownTime and disables the resend button for 30 seconds.
+Timer runs locally on frontend.
+When the timer reaches 0, user can resend OTP.
+Resend calls the same endpoint, backend issues a new OTP, and cooldown restarts.
+User finally submits OTP and backend verifies validity + expiry.
+
+Brief - 
+1. User Requests OTP
+User enters their email and hits “Send OTP”.
+Frontend sends a POST request to:
+/login/sendOTP with { email }.
+
+Backend:
+Generates a random OTP.
+Stores OTP with expiration (e.g., 5 mins).
+Stores a coolDownTime (e.g., 30 seconds).
+Sends OTP to the user’s email.
+Backend responds with:
+{ success: "OTP Sent Successfully", coolDownTime: 30 }.
+
+2. Frontend Starts Cooldown Timer
+Frontend reads coolDownTime from API response.
+Starts a 30-second countdown timer.
+Disables “Resend OTP” button during countdown.
+Updates UI like: “Resend OTP in 29s…28s…”
+
+3. User Clicks “Resend OTP”
+Frontend checks if cooldown is 0.
+If cooldown is still running → button remains disabled.
+If cooldown is finished:
+Sends the same API request again /sendOTP.
+Backend:
+Validates resend attempt.
+Generates a new OTP.
+Resets coolDownTime again (30s).
+Sends new OTP to email.
+
+4. Cooldown Restarts After Resend
+Frontend receives new { coolDownTime: 30 }.
+Restarts the timer.
+Button gets disabled again for 30 seconds.
+
+5. User Submits OTP for Verification
+User enters the OTP they received.
+Frontend sends it to backend: /verifyOTP.
+Backend:
+Checks OTP match.
+Checks OTP expiry.
+If valid → login/signup continues.
+If invalid/expired → shows appropriate error.

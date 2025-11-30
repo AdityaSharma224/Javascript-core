@@ -1,0 +1,33 @@
+This app is a real-time video conferencing platform similar to Zoom, 
+built using Node.js, Express, Socket.io, and Peer.js. 
+When a user visits the homepage, they are automatically 
+redirected to a unique meeting room using a randomly generated UUID. 
+The backend manages these rooms and handles WebSocket-based real-time 
+communication using Socket.io.
+
+Once inside a room, users can stream video and audio using WebRTC, 
+which is facilitated by Peer.js for peer-to-peer connections. 
+The app also includes a text chat feature, where messages are 
+sent and received in real time via Socket.io.
+
+Users have controls to mute/unmute their microphone and start/stop 
+their video feed. When so meone leaves, their video stream is removed, 
+and connections are properly closed. The frontend is built using EJS templates,
+Bootstrap for styling, and jQuery for interactivity,
+ensuring a smooth user experience.
+The app runs on port 433 but can be deployed on any server.
+
+
+Socket.io
+A library used for real-time, bi-directional communication between client and server.
+Works over WebSockets but falls back to other protocols if needed, ensuring reliability.
+Ideal for chat apps, video calling, multiplayer games, collaborative tools.
+Provides automatic reconnection, room management, and event-based messaging.
+
+WebRTC
+Stands for Web Real-Time Communication.
+A browser-native technology that allows peer-to-peer 
+audio/video streaming without needing plugins.
+Used for video calls, screen sharing, and real-time media transfer.
+Handles audio/video capture, encoding, NAT traversal (via STUN/TURN servers), 
+and encrypted media transport.

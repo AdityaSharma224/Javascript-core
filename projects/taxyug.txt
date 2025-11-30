@@ -1,0 +1,88 @@
+During my graduation, a few chartered accountant friends shared how many 
+people struggled with filing ITR and GST. They suggested 
+I build a simple platform where they could offer reliable tax services. 
+That conversation inspired me to create TaxYug—a clean,
+fast, SEO-optimized website that simplifies taxes for everyone.
+
+What TaxYug Does
+
+Provides fast, secure, user-friendly tax services:
+✔ ITR Filing (all types)
+✔ GST Filing
+✔ HUF Registration
+
+Offers additional tools like:
+
+✔ Free Tax Calculators
+✔ Blogs & Knowledge Center to explain tax concepts
+✔ FAQs Section answering common tax questions
+
+The platform is focused on simplicity, reliability, and affordability.
+
+⭐ Tech Stack & Architecture
+Built with React + React Router
+SEO using React-Helmet + static enhancements in index.html
+Added performance improvements using:
+Pre-loader
+Image preloading
+WebP images
+Analytics & tracking with Google Analytics (gtag)
+Sitemap auto-generator using sitemap npm package
+
+⭐ Core Frontend Features
+Reusable SEO component (SEOHelmet)
+Dynamic blog routing using slugs
+Scroll restoration (ScrollToTop)
+Floating call/feedback buttons for UX
+Responsive & accessible UI
+Clean routing structure
+Preloader only for homepage for smoother UX
+
+⭐ SEO Improvements I Implemented
+On-Page SEO
+Dynamic <title> and <meta> tags using React-Helmet
+Dynamic OG / Twitter tags for social sharing
+Canonical URLs
+Keywords meta tag only on the landing page
+Proper semantic structure through landing content
+Technical SEO
+Auto-generated sitemap.xml for search engine crawling
+Multiple preloaded WebP images for better LCP
+Clean URL structure
+Removed render-blocking assets
+Ensured lighthouse-friendly optimizations
+Schema Markup
+Added Organization schema (JSON-LD) for Google Knowledge Graph
+Performance Optimization
+Preloading hero images improves LCP
+WebP images reduce asset size by ~40–60%
+Conditional preloader (only on home) to avoid unnecessary overhead
+Minimal render re-renders with memoized routes and simple components
+No external heavy UI frameworks to keep bundle small
+
+⭐ Security & Reliability Enhancements
+All assets served over HTTPS
+No client-side sensitive data storage
+GA events capturing page paths accurately
+
+⭐ Services Provided by TaxYug
+ITR Filing Services
+Salary Income
+Business Income
+Freelancers / Consultants
+GST Services
+GST Filing
+GST Registration
+HUF Creation & Tax Benefit Filing
+Free Tools
+Tax Calculator
+GST Calculator
+Content-Driven Education
+Blogs
+FAQs
+
+⭐ Impact / Value Proposition
+Helps users file taxes easily and affordably without CA dependencies
+Saves time with a smooth, structured workflow
+Offers expert-backed guidance in plain language
+Builds trust with transparent UI, easy navigation, and helpful content

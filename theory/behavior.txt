@@ -28,45 +28,6 @@ clearer roadmaps, and a more structured product + engineering
 collaboration, so I can contribute more effectively and grow in 
 the right direction
 
-OTP - 
-Situtaion was - Users were repeatedly requesting OTP's, causing load on
-authentication service. so the task was to introduce a reliable controlled
-resend OTP flow.
-I developed and deployed a resend OTP feature a 30 second cooldown.
-that resulted in improved login success rate and now user won't be able to spam with requets.
-
-Lifeline lite - 
-So in nugget basically in ticket view we have an option where onboarded tenant can ask for customized window
-so there they can personalized component. so that personalized component is lifeline lite
-
- So the problem statement was -
- Agents had to manually open multiple tabs and systems to gather 
- customer information during live conversations. 
- This caused context switching, slowed down decision-making,
- and increased ticket resolution time. Because critical 
- details were scattered across different tools, agents 
- spent significant time searching for the right customer 
- data instead of focusing on resolving the issue.
-
-how - 
-We integrated with the client API to fetch all 
-relevant customer data in real time as soon as an agent opened a conversation.
-now the messages handling and to get the context of the conversation we have used LLM's and through
-full duplex connection through mqtt we passed that data throght props to the component I built.
-I structured the UI using a modular component architecture, where each section (customer profile, 
-past tickets, plan info, eligibility, etc.) was its own component that updated based on changing props.
-
-To make the interface contextual, the components were built to adapt 
-dynamically based on the conversation flow — for example, showing 
-different sections or highlighting critical data depending on the agent’s current step.
-To avoid unnecessary re-renders, I used React optimization techniques such as:
-memo() for pure components useCallback and useMemo for stable functions and derived data
-
-Lazy loading of non-critical sections
-Conditional rendering depending on API state
-The result was a smooth, real-time UI where data updated instantly without lag, 
-and only the required components re-rendered.
-
 challenging task ?
 That's probably the recent feature I shipped in nugget the lifeline dashboard becase 
 to display data contexually on ui there are so many ways to do that. 
