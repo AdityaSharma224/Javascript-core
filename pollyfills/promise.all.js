@@ -6,7 +6,6 @@
 
 // Rejects immediately if any promise rejects (with that rejection reason).
 
-if (!Promise.all) {
   Promise.all = function (promises) {
     return new Promise((resolve, reject) => {
       if (!Array.isArray(promises)) {
@@ -36,34 +35,3 @@ if (!Promise.all) {
       });
     });
   };
-}
-
-
-if(!Promise.all){
-  Promise.all = function(promises){
-    return new Promise((resolve,reject)=>{
-      if(!Array.isArray(promises)){
-        return reject(new TypeError('Argument must be an array'));
-      }
-
-
-      let results = [];
-      let completed = 0;
-
-
-      promises.forEach((p, index)=>{
-        Promise.resolve(p)
-        .then((value)=>{
-          results[index] = value;
-          completed += 1;
-
-
-          if(completed === promises.length){
-            resolve(results);
-          }
-        })
-        .catch(reject);
-      })
-    })
-  }
-}
