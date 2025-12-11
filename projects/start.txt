@@ -1,0 +1,37 @@
+I am a frontend developer currently working in Zomato, 
+which is India’s largest online food ordering app.
+So I am a part of the Customer Support team, a web platform 
+where agents that are stakeholder of business work on 
+resolving customers’ or merchants’ tickets. 
+Here my day-to-day work is to work on client requirements
+ and build custom dashboards and features from scratch.
+So here I take care of proper optimizations and accountability 
+of the feature I am working on.
+
+Before Zomato I also worked at Cast as a frontend developer. 
+There I was specifically hired to create a desktop application 
+completely from scratch. So I created a desktop app built on top 
+of Wails framework, UI is completely React and backend was Go. 
+So there I also worked with international teams and owned and 
+developed application end-to-end. And later on I also revamped 
+their SaaS customer-facing webpage and did some optimizations. 
+Apart from this I also did some internships when I was in college 
+as an MTS intern at GFG. So there I authored widely read articles 
+on DSA that are available on internet today and these are now 
+search-indexed articles in their category.
+
+why looking for a change ?
+So there majorly two major reasons - 
+I joined Zomato with a clear understanding of the team and 
+type of work I’d be contributing to. However, there was 
+an internal restructuring, and I was moved to a new vertical 
+where the working style, processes, and structure are very 
+different from what I initially signed up for. The environment 
+is quite fluid, with frequent changes and limited clarity or 
+planning. While I’ve adapted and delivered, I feel the setup 
+doesn’t fully align with the way I work best or the kind of 
+engineering culture I’m looking for.
+I’m now looking for a role where there is more stability, 
+clearer roadmaps, and a more structured product + engineering 
+collaboration, so I can contribute more effectively and grow in 
+the right direction

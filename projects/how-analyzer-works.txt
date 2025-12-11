@@ -1,5 +1,18 @@
 
 //Imaging analyzer
+CAST Imaging is used by enterprises for deep code analysis 
+to visualize application architecture, assess change impact, 
+and improve performance, reliability, and security, with 
+adoption across industries like finance, healthcare, and government.
+So this application is being used by firms who care about 
+how their architecture is doing and companies with very 
+vast source code and who want to know each and every layer
+
+visualize all code elements
+data objects and dependencies
+transaction paths and data access graphs across every layer
+analyze change impact across the entire stack
+
 CAST Imaging is unlike any other code analyzer:
 it’s like an examining your custom software applications,
 enabling you to visualize and understand their inner workings.

@@ -1,0 +1,29 @@
+Challenges –
+It was the Lifeline Lite that I recently delivered.
+Because it required building a real-time LCM-driven, 
+contextual dashboard that updates continuously while 
+staying performant. Integrating multiple APIs & streaming 
+conversation context through Mott and design dynamic 
+UI that adapts agent workflow introduced significantly.
+
+I had to architect the UI modularity, 
+optimize rendering and ensure a smooth 
+experience despite constant data updates.
+Choosing the most efficient and scalable 
+approach among many options made the 
+task even more demanding.
+
+To scale this feature without 
+breaking the larger dashboard ecosystem.
+I adapted micro-frontend principles.
+
+Each major section like
+– profile, tickets, plan info, order history
+functioned like its own isolated mini-app.
+– independent rendering & state boundaries prevent massive parent re-renders.
+– arch allowed embedded without tightly coupled into the main dashboard.
+– team now can inst future widgets without touching existing modules.
+
+→ Lazy loading
+→ Contextual conditional rendering
+→ Derived UI state
