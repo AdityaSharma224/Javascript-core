@@ -23,11 +23,11 @@ search-indexed articles in their category.
 why looking for a change ?
 So there majorly two major reasons - 
 I joined Zomato with a clear understanding of the team and 
-type of work I’d be contributing to. However, there was 
-an internal restructuring, and I was moved to a new vertical 
-where the working style, processes, and structure are very 
-different from what I initially signed up for. The environment 
-is quite fluid, with frequent changes and limited clarity or 
+type of work I’d be contributing to. I was hired for core Zomato 
+and after I joined there was an internal restructuring, and 
+I was moved to a new vertical  where the working style, processes,
+and structure are very different from what I initially signed up for. 
+The environment is quite fluid, with frequent changes and limited clarity or 
 planning. While I’ve adapted and delivered, I feel the setup 
 doesn’t fully align with the way I work best or the kind of 
 engineering culture I’m looking for.
